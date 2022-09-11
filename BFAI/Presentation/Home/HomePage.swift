@@ -14,15 +14,29 @@ struct HomePage: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List(viewModel.games) { game in
-                    Text(game.name ?? "")
-                }.listStyle(.grouped).onAppear {
-                    let tableHeaderView = UIView(frame: .zero)
-                    tableHeaderView.frame.size.height = 1
-                    UITableView.appearance().tableHeaderView = tableHeaderView
+                VStack {
+                    let withIndex = viewModel.games.enumerated().map({ $0 })
+                    List(withIndex, id: \.element.name) { i, game in
+                        Text(game.name ?? "").onAppear {
+                            viewModel.getNextPageIfNecessary(encounteredIndex: i)
+                        }
+                    }.listStyle(.grouped).onAppear {
+                        let tableHeaderView = UIView(frame: .zero)
+                        tableHeaderView.frame.size.height = 1
+                        UITableView.appearance().tableHeaderView = tableHeaderView
+                    }
                 }
-                if viewModel.loading {
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                if viewModel.loading || viewModel.isLoadMore {
+                    VStack {
+                        Spacer()
+                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                        if (!viewModel.isLoadMore) {
+                            Spacer()
+                        }
+                    }.frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity
+                    )
                 }
             }
             .navigationBarTitle("Game List", displayMode: .inline)

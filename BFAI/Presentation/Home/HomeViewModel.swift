@@ -8,9 +8,10 @@
 import Foundation
 
 class HomeViewModel: ObservableObject, GetGamesDelegate {
+    
     init() {
         getGameRepository.delegate = self
-        updateGames()
+        getGames()
     }
     
     let getGameRepository = GetGameRepository()
@@ -18,23 +19,57 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
     @Published var games = [Game]()
     @Published var error: Error? = nil
     @Published var loading = false
+    @Published var isLoadMore = false
+    var currentPage = 1
+    var enableLoadMore = false
     
-    func updateGames(page: Int = 1) {
-        getGameRepository.getGames(page: page)
+    func getGames() {
+        currentPage = 1
+        getGameRepository.getGames(page: currentPage)
         loading = true
     }
     
-    func didUpdateGamess(_ repository: GetGameRepository, games: [Game]) {
+    func loadMoreGames() {
+        if !enableLoadMore {
+            return
+        }
+        getGameRepository.getGames(page: currentPage + 1)
+        isLoadMore = true
+    }
+    
+    func didUpdateGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool) {
         DispatchQueue.main.async {
             self.loading = false
             self.games = games
+            self.enableLoadMore = enableLoadMore
         }
     }
     
-    func didFailWithError(error: Error) {
+    func didLoadMoreGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool) {
+        DispatchQueue.main.async {
+            self.isLoadMore = false
+            self.currentPage = self.currentPage + 1
+            self.games = self.games + games
+            self.enableLoadMore = enableLoadMore
+        }
+    }
+    
+    func didUpdateFailWithError(error: Error) {
         DispatchQueue.main.async {
             self.loading = false
             self.error = error
         }
+    }
+    
+    func didLoadMoreFailWithError(error: Error) {
+        DispatchQueue.main.async {
+            self.isLoadMore = false
+            self.error = error
+        }
+    }
+    
+    func getNextPageIfNecessary(encounteredIndex: Int) {
+        guard encounteredIndex == games.count - 1 else { return }
+        loadMoreGames()
     }
 }

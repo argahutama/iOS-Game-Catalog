@@ -8,8 +8,10 @@
 import Foundation
 
 protocol GetGamesDelegate {
-    func didUpdateGamess(_ repository: GetGameRepository, games: [Game])
-    func didFailWithError(error: Error)
+    func didUpdateGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool)
+    func didLoadMoreGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool)
+    func didUpdateFailWithError(error: Error)
+    func didLoadMoreFailWithError(error: Error)
 }
 
 class GetGameRepository {
@@ -36,24 +38,43 @@ class GetGameRepository {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
-                self.delegate?.didFailWithError(error: error!)
+                if page == 1 {
+                    self.delegate?.didUpdateFailWithError(error: error!)
+                } else {
+                    self.delegate?.didLoadMoreFailWithError(error: error!)
+                }
             }
             if let safeData = data {
-                if let games = self.parseJSON(safeData) {
-                    self.delegate?.didUpdateGamess(self, games: games)
+                if let response = self.parseJSON(safeData) {
+                    let games = response.results ?? []
+                    let enableLoadMore = !(response.next ?? "").isEmpty
+                    
+                    if page == 1 {
+                        self.delegate?.didUpdateGames(
+                            self,
+                            games: games,
+                            enableLoadMore: enableLoadMore
+                        )
+                    } else {
+                        self.delegate?.didLoadMoreGames(
+                            self,
+                            games: games,
+                            enableLoadMore: enableLoadMore
+                        )
+                    }
                 }
             }
         }
         task.resume()
     }
     
-    private func parseJSON(_ data: Data) -> [Game]? {
+    private func parseJSON(_ data: Data) -> GetGameResponse? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(GetGameResponse.self, from: data)
-            return decodedData.results
+            return decodedData
         } catch {
-            delegate?.didFailWithError(error: error)
+            delegate?.didUpdateFailWithError(error: error)
             return nil
         }
     }
