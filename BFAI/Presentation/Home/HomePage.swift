@@ -11,16 +11,10 @@ struct HomePage: View {
     
     @StateObject var viewModel = HomeViewModel()
     
-    var games: [Game] {
-        get {
-            return viewModel.games
-        }
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
-                List(games) { game in
+                List(viewModel.games) { game in
                     Text(game.name ?? "")
                 }.listStyle(.grouped).onAppear {
                     let tableHeaderView = UIView(frame: .zero)
