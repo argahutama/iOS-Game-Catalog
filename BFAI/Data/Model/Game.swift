@@ -86,14 +86,12 @@ struct PlatformPlatform: Codable {
     let yearEnd: Int?
     let yearStart: Int?
     let gamesCount: Int?
-    let imageBackground: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug, image
         case yearEnd = "year_end"
         case yearStart = "year_start"
         case gamesCount = "games_count"
-        case imageBackground = "image_background"
     }
 }
 

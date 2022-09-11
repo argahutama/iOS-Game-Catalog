@@ -17,16 +17,17 @@ protocol GetGamesDelegate {
 class GetGamesRepository {
     var delegate: GetGamesDelegate? = nil
     
-    func getGames(page: Int) {
-        performRequest(page: page)
+    func getGames(page: Int, keyword: String) {
+        performRequest(page: page, keyword: keyword)
     }
     
-    private func performRequest(page: Int) {
+    private func performRequest(page: Int, keyword: String) {
         let url = Config.baseUrl + "games"
         
         var components = URLComponents(string: url)!
         
         components.queryItems = [
+            URLQueryItem(name: "search", value: keyword),
             URLQueryItem(name: "key", value: Config.apiKey),
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "page_size", value: String(10))

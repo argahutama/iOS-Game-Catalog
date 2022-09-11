@@ -20,12 +20,14 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
     @Published var error: Error? = nil
     @Published var loading = false
     @Published var isLoadMore = false
+    
     var currentPage = 1
     var enableLoadMore = false
+    var keyword = ""
     
     func getGames() {
         currentPage = 1
-        getGamesRepository.getGames(page: currentPage)
+        getGamesRepository.getGames(page: currentPage, keyword: self.keyword)
         loading = true
     }
     
@@ -33,7 +35,7 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
         if !enableLoadMore {
             return
         }
-        getGamesRepository.getGames(page: currentPage + 1)
+        getGamesRepository.getGames(page: currentPage + 1, keyword: self.keyword)
         isLoadMore = true
     }
     

@@ -11,6 +11,9 @@ import Kingfisher
 struct HomePage: View {
     
     @StateObject var viewModel = HomeViewModel()
+    @State private var searchText = ""
+    @Environment(\.isSearching) private var isSearching: Bool
+    @Environment(\.dismissSearch) private var dismissSearch
     
     var body: some View {
         NavigationView {
@@ -76,6 +79,17 @@ struct HomePage: View {
                         }
                     }
             )
+            .searchable(text: $searchText)
+            .onSubmit(of: .search) {
+                viewModel.keyword = searchText.lowercased()
+                viewModel.getGames()
+            }
+            .onChange(of: searchText) { value in
+                if searchText.isEmpty && !isSearching {
+                    viewModel.keyword = ""
+                    viewModel.getGames()
+                }
+            }
             .background(Color.gray)
         }
     }
