@@ -28,7 +28,8 @@ class GetGameRepository {
         
         components.queryItems = [
             URLQueryItem(name: "key", value: Config.apiKey),
-            URLQueryItem(name: "page", value: String(page))
+            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "page_size", value: String(10))
         ]
         
         var request = URLRequest(url: components.url!)

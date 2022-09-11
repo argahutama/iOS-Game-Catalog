@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA37FDEB28CE232D004EB465 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA37FDEA28CE232D004EB465 /* Kingfisher */; };
+		AA37FDEE28CE24E8004EB465 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = AA37FDED28CE24E8004EB465 /* Nuke */; };
+		AA37FDF128CE2581004EB465 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = AA37FDF028CE2581004EB465 /* Nuke */; };
+		AA37FDF428CE25B3004EB465 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA37FDF328CE25B3004EB465 /* Kingfisher */; };
+		AA37FDF728CE2619004EB465 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA37FDF628CE2619004EB465 /* Kingfisher */; };
 		AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */; };
 		AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A9028CDD3D2002E6E75 /* ContentView.swift */; };
 		AA476A9328CDD3D3002E6E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA476A9228CDD3D3002E6E75 /* Assets.xcassets */; };
@@ -17,6 +22,10 @@
 		AAA7439F28CDE93100B3C7B1 /* GetGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA7439E28CDE93100B3C7B1 /* GetGameResponse.swift */; };
 		AAA743A728CDEDF300B3C7B1 /* GetGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA743A628CDEDF300B3C7B1 /* GetGameRepository.swift */; };
 		AAA743A928CDEF6100B3C7B1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA743A828CDEF6100B3C7B1 /* Game.swift */; };
+		AAA743AC28CE176800B3C7B1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA743AB28CE176800B3C7B1 /* Utils.swift */; };
+		AAA743AF28CE1A3400B3C7B1 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA743AE28CE1A3400B3C7B1 /* RatingView.swift */; };
+		AAA743B428CE215900B3C7B1 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = AAA743B328CE215900B3C7B1 /* CachedAsyncImage */; };
+		AAA743B728CE21FC00B3C7B1 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = AAA743B628CE21FC00B3C7B1 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +40,8 @@
 		AAA7439E28CDE93100B3C7B1 /* GetGameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameResponse.swift; sourceTree = "<group>"; };
 		AAA743A628CDEDF300B3C7B1 /* GetGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameRepository.swift; sourceTree = "<group>"; };
 		AAA743A828CDEF6100B3C7B1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		AAA743AB28CE176800B3C7B1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AAA743AE28CE1A3400B3C7B1 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +49,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA37FDF428CE25B3004EB465 /* Kingfisher in Frameworks */,
+				AA37FDEB28CE232D004EB465 /* Kingfisher in Frameworks */,
+				AA37FDF728CE2619004EB465 /* Kingfisher in Frameworks */,
+				AAA743B428CE215900B3C7B1 /* CachedAsyncImage in Frameworks */,
+				AAA743B728CE21FC00B3C7B1 /* Nuke in Frameworks */,
+				AA37FDEE28CE24E8004EB465 /* Nuke in Frameworks */,
+				AA37FDF128CE2581004EB465 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +81,7 @@
 		AA476A8D28CDD3D2002E6E75 /* BFAI */ = {
 			isa = PBXGroup;
 			children = (
+				AAA743AA28CE175300B3C7B1 /* Common */,
 				AAA7438D28CDE18800B3C7B1 /* Presentation */,
 				AAA7438C28CDE10100B3C7B1 /* Data */,
 				AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */,
@@ -165,6 +184,23 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		AAA743AA28CE175300B3C7B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AAA743AD28CE1A2800B3C7B1 /* View */,
+				AAA743AB28CE176800B3C7B1 /* Utils.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AAA743AD28CE1A2800B3C7B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAA743AE28CE1A3400B3C7B1 /* RatingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +217,15 @@
 			dependencies = (
 			);
 			name = BFAI;
+			packageProductDependencies = (
+				AAA743B328CE215900B3C7B1 /* CachedAsyncImage */,
+				AAA743B628CE21FC00B3C7B1 /* Nuke */,
+				AA37FDEA28CE232D004EB465 /* Kingfisher */,
+				AA37FDED28CE24E8004EB465 /* Nuke */,
+				AA37FDF028CE2581004EB465 /* Nuke */,
+				AA37FDF328CE25B3004EB465 /* Kingfisher */,
+				AA37FDF628CE2619004EB465 /* Kingfisher */,
+			);
 			productName = BFAI;
 			productReference = AA476A8B28CDD3D2002E6E75 /* BFAI.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +254,15 @@
 				Base,
 			);
 			mainGroup = AA476A8228CDD3D2002E6E75;
+			packageReferences = (
+				AAA743B228CE215900B3C7B1 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				AAA743B528CE21FC00B3C7B1 /* XCRemoteSwiftPackageReference "Nuke" */,
+				AA37FDE928CE232D004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AA37FDEC28CE24E8004EB465 /* XCRemoteSwiftPackageReference "Nuke" */,
+				AA37FDEF28CE2581004EB465 /* XCRemoteSwiftPackageReference "Nuke" */,
+				AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AA37FDF528CE2619004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = AA476A8C28CDD3D2002E6E75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -237,6 +291,8 @@
 			files = (
 				AAA7439F28CDE93100B3C7B1 /* GetGameResponse.swift in Sources */,
 				AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */,
+				AAA743AC28CE176800B3C7B1 /* Utils.swift in Sources */,
+				AAA743AF28CE1A3400B3C7B1 /* RatingView.swift in Sources */,
 				AAA743A928CDEF6100B3C7B1 /* Game.swift in Sources */,
 				AAA743A728CDEDF300B3C7B1 /* GetGameRepository.swift in Sources */,
 				AAA7439228CDE33100B3C7B1 /* HomePage.swift in Sources */,
@@ -443,6 +499,103 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA37FDE928CE232D004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AA37FDEC28CE24E8004EB465 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		AA37FDEF28CE2581004EB465 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		AA37FDF528CE2619004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AAA743B228CE215900B3C7B1 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		AAA743B528CE21FC00B3C7B1 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA37FDEA28CE232D004EB465 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA37FDE928CE232D004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AA37FDED28CE24E8004EB465 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAA743B528CE21FC00B3C7B1 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		AA37FDF028CE2581004EB465 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA37FDEF28CE2581004EB465 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		AA37FDF328CE25B3004EB465 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AA37FDF628CE2619004EB465 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA37FDE928CE232D004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AAA743B328CE215900B3C7B1 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAA743B228CE215900B3C7B1 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		AAA743B628CE21FC00B3C7B1 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAA743B528CE21FC00B3C7B1 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA476A8328CDD3D2002E6E75 /* Project object */;
 }

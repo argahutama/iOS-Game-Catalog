@@ -49,7 +49,7 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
         DispatchQueue.main.async {
             self.isLoadMore = false
             self.currentPage = self.currentPage + 1
-            self.games = self.games + games
+            self.games.append(contentsOf: games)
             self.enableLoadMore = enableLoadMore
         }
     }

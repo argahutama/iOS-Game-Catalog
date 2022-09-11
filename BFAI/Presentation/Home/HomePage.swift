@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HomePage: View {
     
@@ -16,8 +17,25 @@ struct HomePage: View {
             ZStack {
                 VStack {
                     let withIndex = viewModel.games.enumerated().map({ $0 })
-                    List(withIndex, id: \.element.name) { i, game in
-                        Text(game.name ?? "").onAppear {
+                    List(withIndex, id: \.element.id) { i, game in
+                        HStack {
+                            KFImage.url(URL(string: game.backgroundImage ?? ""))
+                                .placeholder { p in ProgressView() }
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(8)
+                                .clipped()
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text(game.name ?? "").font(.system(size: 16))
+                                Text(
+                                    Utils.formattedDateFromString(
+                                        dateString: game.released ?? ""
+                                    )
+                                ).font(.system(size: 12)).foregroundColor(.gray)
+                                RatingView(rating: game.rating ?? 0)
+                            }.padding()
+                        }.onAppear {
                             viewModel.getNextPageIfNecessary(encounteredIndex: i)
                         }
                     }.listStyle(.grouped).onAppear {
@@ -40,6 +58,7 @@ struct HomePage: View {
                 }
             }
             .navigationBarTitle("Game List", displayMode: .inline)
+            .background(Color.gray)
         }
     }
 }
