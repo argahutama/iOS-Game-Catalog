@@ -11,7 +11,6 @@ import Kingfisher
 struct DetailPage: View {
     let gameId: Int
     @StateObject var viewModel = DetailViewModel()
-    @State private var size: CGSize = .zero
     
     init(gameId: Int) {
         self.gameId = gameId

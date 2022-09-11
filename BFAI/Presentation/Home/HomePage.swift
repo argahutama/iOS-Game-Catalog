@@ -68,6 +68,14 @@ struct HomePage: View {
                 }
             }
             .navigationBarTitle("Game List", displayMode: .inline)
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        NavigationLink(destination: AboutPage()) {
+                            Text("About Me")
+                        }
+                    }
+            )
             .background(Color.gray)
         }
     }
