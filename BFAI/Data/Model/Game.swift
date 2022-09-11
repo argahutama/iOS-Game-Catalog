@@ -11,6 +11,7 @@ struct Game: Codable, Identifiable {
     let id: Int?
     let slug: String?
     let name: String?
+    let description: String?
     let released: String?
     let tba: Bool?
     let backgroundImage: String?
@@ -25,14 +26,14 @@ struct Game: Codable, Identifiable {
     let saturatedColor, dominantColor: String?
     let platforms: [PlatformElement]?
     let parentPlatforms: [ParentPlatform]?
-    let genres: [Genre]?
+    let genres: [CommonModel]?
     let stores: [Store]?
-    let tags: [Genre]?
+    let tags: [CommonModel]?
     let esrbRating: EsrbRating?
     let shortScreenshots: [ShortScreenshot]?
 
     enum CodingKeys: String, CodingKey {
-        case id, slug, name, released, tba
+        case id, slug, name, description, released, tba
         case backgroundImage = "background_image"
         case rating
         case ratingTop = "rating_top"
@@ -58,27 +59,6 @@ struct Game: Codable, Identifiable {
 struct AddedByStatus: Codable {
     let yet, owned, beaten, toplay: Int?
     let dropped, playing: Int?
-}
-
-struct EsrbRating: Codable {
-    let id: Int?
-    let name, slug: String?
-}
-
-struct Genre: Codable {
-    let id: Int?
-    let name, slug: String?
-    let gamesCount: Int?
-    let imageBackground: String?
-    let domain: String?
-    let language: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case domain, language
-    }
 }
 
 struct ParentPlatform: Codable {
@@ -136,5 +116,5 @@ struct ShortScreenshot: Codable {
 
 struct Store: Codable {
     let id: Int?
-    let store: Genre?
+    let store: CommonModel?
 }

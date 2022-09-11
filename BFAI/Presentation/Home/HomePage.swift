@@ -18,25 +18,35 @@ struct HomePage: View {
                 VStack {
                     let withIndex = viewModel.games.enumerated().map({ $0 })
                     List(withIndex, id: \.element.id) { i, game in
-                        HStack {
-                            KFImage.url(URL(string: game.backgroundImage ?? ""))
-                                .placeholder { p in ProgressView() }
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(8)
-                                .clipped()
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text(game.name ?? "").font(.system(size: 16))
-                                Text(
-                                    Utils.formattedDateFromString(
-                                        dateString: game.released ?? ""
+                        NavigationLink(destination: DetailPage(gameId: game.id ?? 0)) {
+                            HStack {
+                                KFImage.url(URL(string: game.backgroundImage ?? ""))
+                                    .placeholder { p in ProgressView() }
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(8)
+                                    .clipped()
+                                VStack(alignment: .leading, spacing: 12) {
+                                    Text(game.name ?? "").font(.system(size: 16))
+                                    
+                                    Text(
+                                        Utils.formattedDateFromString(
+                                            dateString: game.released ?? ""
+                                        )
                                     )
-                                ).font(.system(size: 12)).foregroundColor(.gray)
-                                RatingView(rating: game.rating ?? 0)
-                            }.padding()
-                        }.onAppear {
-                            viewModel.getNextPageIfNecessary(encounteredIndex: i)
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray)
+                                    .frame(
+                                        minWidth: 100,
+                                        alignment: .leading
+                                    )
+                                    
+                                    RatingView(rating: game.rating ?? 0)
+                                }.padding()
+                            }.onAppear {
+                                viewModel.getNextPageIfNecessary(encounteredIndex: i)
+                            }
                         }
                     }.listStyle(.grouped).onAppear {
                         let tableHeaderView = UIView(frame: .zero)

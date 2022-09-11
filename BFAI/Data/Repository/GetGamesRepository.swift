@@ -8,13 +8,13 @@
 import Foundation
 
 protocol GetGamesDelegate {
-    func didUpdateGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool)
-    func didLoadMoreGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool)
+    func didUpdateGames(_ repository: GetGamesRepository, games: [Game], enableLoadMore: Bool)
+    func didLoadMoreGames(_ repository: GetGamesRepository, games: [Game], enableLoadMore: Bool)
     func didUpdateFailWithError(error: Error)
     func didLoadMoreFailWithError(error: Error)
 }
 
-class GetGameRepository {
+class GetGamesRepository {
     var delegate: GetGamesDelegate? = nil
     
     func getGames(page: Int) {
@@ -69,10 +69,10 @@ class GetGameRepository {
         task.resume()
     }
     
-    private func parseJSON(_ data: Data) -> GetGameResponse? {
+    private func parseJSON(_ data: Data) -> GetGamesResponse? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(GetGameResponse.self, from: data)
+            let decodedData = try decoder.decode(GetGamesResponse.self, from: data)
             return decodedData
         } catch {
             delegate?.didUpdateFailWithError(error: error)

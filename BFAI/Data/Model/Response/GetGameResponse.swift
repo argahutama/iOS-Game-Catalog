@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetGameResponse: Codable {
+struct GetGamesResponse: Codable {
     let count: Int?
     let next: String?
     let previous: String?

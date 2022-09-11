@@ -10,11 +10,11 @@ import Foundation
 class HomeViewModel: ObservableObject, GetGamesDelegate {
     
     init() {
-        getGameRepository.delegate = self
+        getGamesRepository.delegate = self
         getGames()
     }
     
-    let getGameRepository = GetGameRepository()
+    let getGamesRepository = GetGamesRepository()
     
     @Published var games = [Game]()
     @Published var error: Error? = nil
@@ -25,7 +25,7 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
     
     func getGames() {
         currentPage = 1
-        getGameRepository.getGames(page: currentPage)
+        getGamesRepository.getGames(page: currentPage)
         loading = true
     }
     
@@ -33,11 +33,11 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
         if !enableLoadMore {
             return
         }
-        getGameRepository.getGames(page: currentPage + 1)
+        getGamesRepository.getGames(page: currentPage + 1)
         isLoadMore = true
     }
     
-    func didUpdateGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool) {
+    func didUpdateGames(_ repository: GetGamesRepository, games: [Game], enableLoadMore: Bool) {
         DispatchQueue.main.async {
             self.loading = false
             self.games = games
@@ -45,7 +45,7 @@ class HomeViewModel: ObservableObject, GetGamesDelegate {
         }
     }
     
-    func didLoadMoreGames(_ repository: GetGameRepository, games: [Game], enableLoadMore: Bool) {
+    func didLoadMoreGames(_ repository: GetGamesRepository, games: [Game], enableLoadMore: Bool) {
         DispatchQueue.main.async {
             self.isLoadMore = false
             self.currentPage = self.currentPage + 1
