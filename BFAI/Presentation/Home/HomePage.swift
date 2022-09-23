@@ -31,7 +31,12 @@ struct HomePage: View {
                                     .cornerRadius(8)
                                     .clipped()
                                 VStack(alignment: .leading, spacing: 12) {
-                                    Text(game.name ?? "").font(.system(size: 16))
+                                    Text(game.name ?? "")
+                                        .font(.system(size: 16))
+                                        .frame(
+                                            minWidth: 100,
+                                            alignment: .leading
+                                        )
                                     
                                     Text(
                                         Utils.formattedDateFromString(
