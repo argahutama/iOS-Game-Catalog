@@ -113,13 +113,12 @@
 			path = Favorite;
 			sourceTree = "<group>";
 		};
-		AA3D101F28DE0FE30075C5E5 /* Local */ = {
+		AA3D101F28DE0FE30075C5E5 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
 				AA3D102028DE10040075C5E5 /* FavoriteGameProvider.swift */,
-				AA3D102728DE280D0075C5E5 /* UserRepository.swift */,
 			);
-			path = Local;
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		AA3D102228DE26CF0075C5E5 /* EditProfile */ = {
@@ -172,9 +171,9 @@
 		AAA7438C28CDE10100B3C7B1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AA3D101F28DE0FE30075C5E5 /* Local */,
+				AAA7439A28CDE54D00B3C7B1 /* Config.swift */,
+				AA3D101F28DE0FE30075C5E5 /* Provider */,
 				AAA7439028CDE1B300B3C7B1 /* Repository */,
-				AAA7438F28CDE1AC00B3C7B1 /* Remote */,
 				AAA7438E28CDE1A100B3C7B1 /* Model */,
 			);
 			path = Data;
@@ -205,17 +204,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		AAA7438F28CDE1AC00B3C7B1 /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				AAA7439828CDE44200B3C7B1 /* Service */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
 		AAA7439028CDE1B300B3C7B1 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				AA3D102728DE280D0075C5E5 /* UserRepository.swift */,
 				AA37FE0A28CE3B5B004EB465 /* GetGameDetailRepository.swift */,
 				AAA743A628CDEDF300B3C7B1 /* GetGamesRepository.swift */,
 			);
@@ -247,14 +239,6 @@
 				AA37FE1528CE4842004EB465 /* AboutViewModel.swift */,
 			);
 			path = About;
-			sourceTree = "<group>";
-		};
-		AAA7439828CDE44200B3C7B1 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				AAA7439A28CDE54D00B3C7B1 /* Config.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		AAA7439928CDE44A00B3C7B1 /* Response */ = {
