@@ -70,12 +70,15 @@ struct HomePage: View {
                     )
                 }
             }
-            .navigationBarTitle("Game List", displayMode: .inline)
+            .navigationBarTitle("Games", displayMode: .inline)
             .navigationBarItems(
                 trailing:
                     HStack {
+                        NavigationLink(destination: FavoritePage()) {
+                            Text("Favorites")
+                        }
                         NavigationLink(destination: AboutPage()) {
-                            Text("About Me")
+                            Text("About")
                         }
                     }
             )
@@ -90,7 +93,7 @@ struct HomePage: View {
                     viewModel.getGames()
                 }
             }
-            .background(Color.gray)
+            .background(.gray)
         }
     }
 }
