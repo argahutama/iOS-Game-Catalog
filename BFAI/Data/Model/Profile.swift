@@ -7,11 +7,10 @@
 
 import Foundation
 
-struct Profile {
-    let name: String? = "Arga Hutama"
-    let profilePicture: String? = "https://avatars.githubusercontent.com/u/58361416?v=4"
-    let city: String? = "Surakarta"
-    let age: Int? = 25
-    let workingAt: String? = "Zenius Education"
-    let position: String? = "Android Engineer"
+struct Profile: Codable {
+    var name: String? = "Arga Hutama"
+    var profilePicture: String? = "https://avatars.githubusercontent.com/u/58361416?v=4"
+    var city: String? = "Surakarta"
+    var workingAt: String? = "Zenius Education"
+    var position: String? = "Android Engineer"
 }

@@ -15,7 +15,6 @@
 		AA37FDF928CE2B13004EB465 /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FDF828CE2B13004EB465 /* DetailPage.swift */; };
 		AA37FDFB28CE2D86004EB465 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FDFA28CE2D86004EB465 /* DetailViewModel.swift */; };
 		AA37FE0528CE36C3004EB465 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FE0428CE36C3004EB465 /* CommonModel.swift */; };
-		AA37FE0928CE3790004EB465 /* EsrbRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FE0828CE3790004EB465 /* EsrbRating.swift */; };
 		AA37FE0B28CE3B5B004EB465 /* GetGameDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FE0A28CE3B5B004EB465 /* GetGameDetailRepository.swift */; };
 		AA37FE1028CE452A004EB465 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FE0F28CE452A004EB465 /* StringExt.swift */; };
 		AA37FE1228CE4793004EB465 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37FE1128CE4793004EB465 /* Profile.swift */; };
@@ -25,6 +24,10 @@
 		AA3D101828DE0AF70075C5E5 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D101728DE0AF70075C5E5 /* FavoriteViewModel.swift */; };
 		AA3D101E28DE0DC90075C5E5 /* FavoriteGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3D101C28DE0DC90075C5E5 /* FavoriteGame.xcdatamodeld */; };
 		AA3D102128DE10040075C5E5 /* FavoriteGameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D102028DE10040075C5E5 /* FavoriteGameProvider.swift */; };
+		AA3D102428DE26DE0075C5E5 /* EditProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D102328DE26DE0075C5E5 /* EditProfilePage.swift */; };
+		AA3D102628DE26FA0075C5E5 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D102528DE26FA0075C5E5 /* EditProfileViewModel.swift */; };
+		AA3D102828DE280D0075C5E5 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D102728DE280D0075C5E5 /* UserRepository.swift */; };
+		AA3D102A28DE315F0075C5E5 /* BindingExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D102928DE315F0075C5E5 /* BindingExt.swift */; };
 		AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */; };
 		AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A9028CDD3D2002E6E75 /* ContentView.swift */; };
 		AA476A9328CDD3D3002E6E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA476A9228CDD3D3002E6E75 /* Assets.xcassets */; };
@@ -45,7 +48,6 @@
 		AA37FDF828CE2B13004EB465 /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		AA37FDFA28CE2D86004EB465 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AA37FE0428CE36C3004EB465 /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
-		AA37FE0828CE3790004EB465 /* EsrbRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsrbRating.swift; sourceTree = "<group>"; };
 		AA37FE0A28CE3B5B004EB465 /* GetGameDetailRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGameDetailRepository.swift; sourceTree = "<group>"; };
 		AA37FE0F28CE452A004EB465 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		AA37FE1128CE4793004EB465 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -55,6 +57,10 @@
 		AA3D101728DE0AF70075C5E5 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		AA3D101D28DE0DC90075C5E5 /* FavoriteGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteGame.xcdatamodel; sourceTree = "<group>"; };
 		AA3D102028DE10040075C5E5 /* FavoriteGameProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGameProvider.swift; sourceTree = "<group>"; };
+		AA3D102328DE26DE0075C5E5 /* EditProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePage.swift; sourceTree = "<group>"; };
+		AA3D102528DE26FA0075C5E5 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		AA3D102728DE280D0075C5E5 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		AA3D102928DE315F0075C5E5 /* BindingExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExt.swift; sourceTree = "<group>"; };
 		AA476A8B28CDD3D2002E6E75 /* BFAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFAIApp.swift; sourceTree = "<group>"; };
 		AA476A9028CDD3D2002E6E75 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				AA37FE0F28CE452A004EB465 /* StringExt.swift */,
+				AA3D102928DE315F0075C5E5 /* BindingExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -109,8 +116,18 @@
 			isa = PBXGroup;
 			children = (
 				AA3D102028DE10040075C5E5 /* FavoriteGameProvider.swift */,
+				AA3D102728DE280D0075C5E5 /* UserRepository.swift */,
 			);
 			path = Local;
+			sourceTree = "<group>";
+		};
+		AA3D102228DE26CF0075C5E5 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				AA3D102328DE26DE0075C5E5 /* EditProfilePage.swift */,
+				AA3D102528DE26FA0075C5E5 /* EditProfileViewModel.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		AA476A8228CDD3D2002E6E75 = {
@@ -164,6 +181,7 @@
 		AAA7438D28CDE18800B3C7B1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AA3D102228DE26CF0075C5E5 /* EditProfile */,
 				AA3D101428DE0ADB0075C5E5 /* Favorite */,
 				AAA7439528CDE3D800B3C7B1 /* About */,
 				AAA7439428CDE3CF00B3C7B1 /* Detail */,
@@ -179,7 +197,6 @@
 				AAA7439928CDE44A00B3C7B1 /* Response */,
 				AAA743A828CDEF6100B3C7B1 /* Game.swift */,
 				AA37FE0428CE36C3004EB465 /* CommonModel.swift */,
-				AA37FE0828CE3790004EB465 /* EsrbRating.swift */,
 				AA37FE1128CE4793004EB465 /* Profile.swift */,
 				AA3D101C28DE0DC90075C5E5 /* FavoriteGame.xcdatamodeld */,
 			);
@@ -355,10 +372,12 @@
 				AA37FE1228CE4793004EB465 /* Profile.swift in Sources */,
 				AAA7439F28CDE93100B3C7B1 /* GetGameResponse.swift in Sources */,
 				AA3D101628DE0AED0075C5E5 /* FavoritePage.swift in Sources */,
+				AA3D102828DE280D0075C5E5 /* UserRepository.swift in Sources */,
 				AA37FE1628CE4842004EB465 /* AboutViewModel.swift in Sources */,
 				AA37FE1428CE4830004EB465 /* AboutPage.swift in Sources */,
 				AA37FDF928CE2B13004EB465 /* DetailPage.swift in Sources */,
 				AA3D101828DE0AF70075C5E5 /* FavoriteViewModel.swift in Sources */,
+				AA3D102628DE26FA0075C5E5 /* EditProfileViewModel.swift in Sources */,
 				AA3D101E28DE0DC90075C5E5 /* FavoriteGame.xcdatamodeld in Sources */,
 				AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */,
 				AAA743AC28CE176800B3C7B1 /* Utils.swift in Sources */,
@@ -369,9 +388,10 @@
 				AAA743A728CDEDF300B3C7B1 /* GetGamesRepository.swift in Sources */,
 				AA37FE1028CE452A004EB465 /* StringExt.swift in Sources */,
 				AA37FDFB28CE2D86004EB465 /* DetailViewModel.swift in Sources */,
+				AA3D102A28DE315F0075C5E5 /* BindingExt.swift in Sources */,
 				AAA7439228CDE33100B3C7B1 /* HomePage.swift in Sources */,
-				AA37FE0928CE3790004EB465 /* EsrbRating.swift in Sources */,
 				AA3D102128DE10040075C5E5 /* FavoriteGameProvider.swift in Sources */,
+				AA3D102428DE26DE0075C5E5 /* EditProfilePage.swift in Sources */,
 				AAA7439B28CDE54D00B3C7B1 /* Config.swift in Sources */,
 				AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */,
 				AAA7439728CDE3EB00B3C7B1 /* HomeViewModel.swift in Sources */,

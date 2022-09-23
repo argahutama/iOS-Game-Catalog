@@ -150,6 +150,6 @@ struct DetailPage: View {
                     }
                 }
             }
-        }
+        }.navigationBarTitle(viewModel.game?.name ?? "Game Detail", displayMode: .inline)
     }
 }

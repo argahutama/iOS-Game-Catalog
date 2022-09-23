@@ -40,18 +40,6 @@ struct AboutPage: View {
                             )
                         )
                     
-                    Text("Age: \(viewModel.myProfile.age ?? 0)")
-                        .font(.system(size: 14))
-                        .foregroundColor(.gray)
-                        .padding(
-                            EdgeInsets(
-                                top: 5,
-                                leading: 20,
-                                bottom: 0,
-                                trailing: 20
-                            )
-                        )
-                    
                     Text("\(viewModel.myProfile.position ?? "") @\(viewModel.myProfile.workingAt ?? "")")
                         .padding(
                             EdgeInsets(
@@ -71,9 +59,20 @@ struct AboutPage: View {
                                 trailing: 20
                             )
                         )
-                    
                 }
             }
+        }
+        .navigationBarTitle("About Me", displayMode: .inline)
+        .navigationBarItems(
+            trailing:
+                HStack {
+                    NavigationLink(destination: EditProfilePage()) {
+                        Text("Edit Profile")
+                    }
+                }
+        )
+        .onAppear {
+            viewModel.getProfile()
         }
     }
 }
