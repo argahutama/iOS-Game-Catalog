@@ -7,7 +7,18 @@
 
 import Foundation
 
-enum Config {
+struct Config {
     static let baseUrl = "https://api.rawg.io/api/"
-    static let apiKey = "664437d9adaa463a9db07fcb12f736cd"
+    static var apiKey: String {
+        get {
+            guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+              fatalError("Couldn't find file 'Info.plist'.")
+            }
+            let plist = NSDictionary(contentsOfFile: filePath)
+            guard let value = plist?.object(forKey: "Api Key") as? String else {
+              fatalError("Couldn't find key 'API_KEY' in 'Info.plist'.")
+            }
+            return value
+          }
+    }
 }
