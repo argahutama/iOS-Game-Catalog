@@ -7,47 +7,43 @@
 
 import Foundation
 
-class DetailViewModel: ObservableObject, GetGameDetailDelegate {
+class DetailViewModel: ObservableObject {
     
-    let repository = GetGameDetailRepository()
-    let favGameProvider = FavoriteGameProvider()
+    let repository: GameDetailRepository = GameDetailRepositoryImpl()
+    let favGameRepository: FavoriteGameRepositoryImpl = FavoriteGameRepositoryImpl()
     
     @Published var game: Game? = nil
     @Published var error: Error? = nil
     @Published var loading = true
     
-    init() {
-        repository.delegate = self
-    }
-    
     func getGameDetail(id: Int) {
-        repository.getGame(id: id)
-    }
-    
-    func didUpdateGame(_ repository: GetGameDetailRepository, game: Game?) {
-        DispatchQueue.main.async {
-            self.loading = false
-            self.game = game
-            self.checkIsFavorite()
-        }
-    }
-    
-    func didUpdateFailWithError(error: Error) {
-        DispatchQueue.main.async {
-            self.loading = false
-            self.error = error
-        }
+        repository.getGame(
+            id: id,
+            onSuccess: { game in
+                DispatchQueue.main.async {
+                    self.loading = false
+                    self.game = game
+                    self.checkIsFavorite()
+                }
+            },
+            onFailure: { error in
+                DispatchQueue.main.async {
+                    self.loading = false
+                    self.error = error
+                }
+            }
+        )
     }
     
     func toggleFavorite() {
         guard game != nil else { return }
         
         if (game!.isFavorite == true) {
-            favGameProvider.removeFavorite(gameId: self.game!.id ?? -1) {
+            favGameRepository.removeFavorite(gameId: self.game!.id ?? -1) {
                 self.game?.isFavorite = false
             }
         } else {
-            favGameProvider.addFavorite(game: self.game!) {
+            favGameRepository.addFavorite(game: self.game!) {
                 self.game?.isFavorite = true
             }
         }
@@ -56,7 +52,7 @@ class DetailViewModel: ObservableObject, GetGameDetailDelegate {
     func checkIsFavorite() {
         guard game != nil else { return }
         
-        favGameProvider.findData(gameId: game!.id ?? -1) { isFavorite in
+        favGameRepository.findData(gameId: game!.id ?? -1) { isFavorite in
             self.game?.isFavorite = isFavorite
         }
     }

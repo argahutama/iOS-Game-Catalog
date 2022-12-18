@@ -7,19 +7,24 @@
 
 import Foundation
 
-protocol GetGameDetailDelegate {
-    func didUpdateGame(_ repository: GetGameDetailRepository, game: Game?)
-    func didUpdateFailWithError(error: Error)
-}
-
-class GetGameDetailRepository {
-    var delegate: GetGameDetailDelegate? = nil
-    
-    func getGame(id: Int) {
-        performRequest(id: id)
+class GameDetailRepositoryImpl: GameDetailRepository {
+    func getGame(
+        id: Int,
+        onSuccess: @escaping (_ game: Game?) -> Void,
+        onFailure: @escaping (_ error: Error) -> Void
+    ) {
+        performRequest(
+            id: id,
+            onSuccess: onSuccess,
+            onFailure: onFailure
+        )
     }
     
-    private func performRequest(id: Int) {
+    private func performRequest(
+        id: Int,
+        onSuccess: @escaping (_ game: Game?) -> Void,
+        onFailure: @escaping (_ error: Error) -> Void
+    ) {
         let url = Config.baseUrl + "games/\(id)"
         
         var components = URLComponents(string: url)!
@@ -32,28 +37,30 @@ class GetGameDetailRepository {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
-                self.delegate?.didUpdateFailWithError(error: error!)
+                onFailure(error!)
             }
             if let safeData = data {
-                if let response = self.parseJSON(safeData) {
-                    self.delegate?.didUpdateGame(
-                        self,
-                        game: response
-                    )
-                }
+                self.parseJSON(
+                    safeData,
+                    onSuccess: onSuccess,
+                    onFailure: onFailure
+                )
             }
         }
         task.resume()
     }
     
-    private func parseJSON(_ data: Data) -> Game? {
+    private func parseJSON(
+        _ data: Data,
+        onSuccess: @escaping (_ game: Game?) -> Void,
+        onFailure: @escaping (_ error: Error) -> Void
+    ) {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(Game.self, from: data)
-            return decodedData
+            onSuccess(decodedData)
         } catch {
-            delegate?.didUpdateFailWithError(error: error)
-            return nil
+            onFailure(error)
         }
     }
 }

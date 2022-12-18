@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserRepository {
+class UserRepositoryImpl: UserRepository {
     func set(newProfile profile: Profile) {
         if let encoded = try? JSONEncoder().encode(profile) {
             UserDefaults.standard.set(encoded, forKey: "profile")

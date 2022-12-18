@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class FavoriteGameProvider {
+class FavoriteGameRepositoryImpl: FavoriteGameRepository {
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FavoriteGame")
         

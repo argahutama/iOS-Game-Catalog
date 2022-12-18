@@ -12,18 +12,18 @@ class FavoriteViewModel: ObservableObject {
         getFavoriteGames()
     }
     
-    let favGameProvider = FavoriteGameProvider()
+    let repository = FavoriteGameRepositoryImpl()
     
     @Published var games = [Game]()
     
     func getFavoriteGames() {
-        favGameProvider.getAllFavoriteGames { games in
+        repository.getAllFavoriteGames { games in
             DispatchQueue.main.async { self.games = games }
         }
     }
     
     func removeFavorite(at index: Int) {
-        favGameProvider.removeFavorite(gameId: games[index].id ?? -1) {
+        repository.removeFavorite(gameId: games[index].id ?? -1) {
             self.games.remove(at: index)
         }
     }
