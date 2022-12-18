@@ -48,6 +48,7 @@
 		AAE902A2294F44610022B52F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AAE902A1294F44610022B52F /* RxCocoa */; };
 		AAE902A4294F44610022B52F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AAE902A3294F44610022B52F /* RxSwift */; };
 		AAE902A6294F45440022B52F /* FavoriteGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE902A5294F45440022B52F /* FavoriteGameRepository.swift */; };
+		AAE902A9294F4DDC0022B52F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AAE902A8294F4DDC0022B52F /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 				AA37FDEB28CE232D004EB465 /* Kingfisher in Frameworks */,
 				AA37FDF728CE2619004EB465 /* Kingfisher in Frameworks */,
 				AAA743B428CE215900B3C7B1 /* CachedAsyncImage in Frameworks */,
+				AAE902A9294F4DDC0022B52F /* Alamofire in Frameworks */,
 				AAA743B728CE21FC00B3C7B1 /* Nuke in Frameworks */,
 				AA37FDEE28CE24E8004EB465 /* Nuke in Frameworks */,
 				AAE902A2294F44610022B52F /* RxCocoa in Frameworks */,
@@ -325,6 +327,7 @@
 				AA37FDF628CE2619004EB465 /* Kingfisher */,
 				AAE902A1294F44610022B52F /* RxCocoa */,
 				AAE902A3294F44610022B52F /* RxSwift */,
+				AAE902A8294F4DDC0022B52F /* Alamofire */,
 			);
 			productName = BFAI;
 			productReference = AA476A8B28CDD3D2002E6E75 /* BFAI.app */;
@@ -363,6 +366,7 @@
 				AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AA37FDF528CE2619004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AAE902A0294F44610022B52F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				AAE902A7294F4DDC0022B52F /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AA476A8C28CDD3D2002E6E75 /* Products */;
 			projectDirPath = "";
@@ -688,6 +692,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		AAE902A7294F4DDC0022B52F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -735,6 +747,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAE902A0294F44610022B52F /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		AAE902A8294F4DDC0022B52F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAE902A7294F4DDC0022B52F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 

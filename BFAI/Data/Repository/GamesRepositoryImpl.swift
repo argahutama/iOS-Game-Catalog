@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class GamesRepositoryImpl: GamesRepository {
     func getGames(
@@ -30,50 +31,22 @@ class GamesRepositoryImpl: GamesRepository {
     ) {
         let url = Config.baseUrl + "games"
         
-        var components = URLComponents(string: url)!
-        
-        components.queryItems = [
-            URLQueryItem(name: "search", value: keyword),
-            URLQueryItem(name: "key", value: Config.apiKey),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(10))
+        let parameters: Parameters = [
+            "key": Config.apiKey,
+            "search": keyword,
+            "page": String(page),
+            "page_size": String(10)
         ]
         
-        var request = URLRequest(url: components.url!)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil {
-                onFailure(error!)
+        AF.request(url, parameters: parameters).validate().responseDecodable(of: GetGamesResponse.self) { response in
+            switch response.result {
+            case .success(let value):
+                let games = value.results ?? []
+                let enableLoadMore = !(value.next ?? "").isEmpty
+                onSuccess(games, enableLoadMore)
+            case .failure:
+                onFailure(response.error!)
             }
-            if let safeData = data {
-                self.parseJSON(
-                    safeData,
-                    onSuccess: { response in
-                        let games = response.results ?? []
-                        let enableLoadMore = !(response.next ?? "").isEmpty
-                        onSuccess(games, enableLoadMore)
-                    },
-                    onFailure: onFailure
-                )
-            }
-        }
-        task.resume()
-    }
-    
-    private func parseJSON(
-        _ data: Data,
-        onSuccess: @escaping (_ response: GetGamesResponse) -> Void,
-        onFailure: @escaping (_ error: Error) -> Void
-    ) {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(GetGamesResponse.self, from: data)
-            onSuccess(decodedData)
-        } catch {
-            onFailure(error)
         }
     }
 }
