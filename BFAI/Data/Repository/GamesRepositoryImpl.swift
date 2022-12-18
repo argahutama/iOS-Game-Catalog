@@ -15,20 +15,6 @@ class GamesRepositoryImpl: GamesRepository {
         onSuccess: @escaping (_ games: [Game], _ enableLoadMore: Bool) -> Void,
         onFailure: @escaping (_ error: Error) -> Void
     ) {
-        performRequest(
-            page: page,
-            keyword: keyword,
-            onSuccess: onSuccess,
-            onFailure: onFailure
-        )
-    }
-    
-    private func performRequest(
-        page: Int,
-        keyword: String,
-        onSuccess: @escaping (_ games: [Game], _ enableLoadMore: Bool) -> Void,
-        onFailure: @escaping (_ error: Error) -> Void
-    ) {
         let url = Config.baseUrl + "games"
         
         let parameters: Parameters = [

@@ -14,18 +14,6 @@ class GameDetailRepositoryImpl: GameDetailRepository {
         onSuccess: @escaping (_ game: Game?) -> Void,
         onFailure: @escaping (_ error: Error) -> Void
     ) {
-        performRequest(
-            id: id,
-            onSuccess: onSuccess,
-            onFailure: onFailure
-        )
-    }
-    
-    private func performRequest(
-        id: Int,
-        onSuccess: @escaping (_ game: Game?) -> Void,
-        onFailure: @escaping (_ error: Error) -> Void
-    ) {
         let url = Config.baseUrl + "games/\(id)"
         
         let parameters: Parameters = [
