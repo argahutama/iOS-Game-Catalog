@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomeViewModel: ObservableObject {
     
@@ -13,7 +14,8 @@ class HomeViewModel: ObservableObject {
         getGames()
     }
     
-    let getGamesRepository = GamesRepositoryImpl()
+    private let getGamesRepository = GamesRepositoryImpl()
+    private let disposeBag = DisposeBag()
     
     @Published var games = [Game]()
     @Published var error: Error? = nil
@@ -26,49 +28,37 @@ class HomeViewModel: ObservableObject {
     
     func getGames() {
         currentPage = 1
-        getGamesRepository.getGames(
-            page: currentPage,
-            keyword: self.keyword,
-            onSuccess: { games, enableLoadMore in
-                DispatchQueue.main.async {
-                    self.loading = false
-                    self.games = games
-                    self.enableLoadMore = enableLoadMore
-                }
-            },
-            onFailure: { error in
-                DispatchQueue.main.async {
-                    self.loading = false
-                    self.error = error
-                }
-            }
-        )
         loading = true
+        getGamesRepository.getGames(page: currentPage, keyword: self.keyword)
+            .observe(on: MainScheduler.instance)
+            .subscribe { result in
+                self.games = result.results ?? []
+                self.enableLoadMore = !(result.next ?? "").isEmpty
+            } onError: { error in
+                self.error = error
+            } onCompleted: {
+                self.loading = false
+            }
+            .disposed(by: disposeBag)
     }
     
     func loadMoreGames() {
         if !enableLoadMore {
             return
         }
-        getGamesRepository.getGames(
-            page: currentPage + 1,
-            keyword: self.keyword,
-            onSuccess: { games, enableLoadMore in
-                DispatchQueue.main.async {
-                    self.isLoadMore = false
-                    self.currentPage = self.currentPage + 1
-                    self.games.append(contentsOf: games)
-                    self.enableLoadMore = enableLoadMore
-                }
-            },
-            onFailure: { error in
-                DispatchQueue.main.async {
-                    self.loading = false
-                    self.error = error
-                }
-            }
-        )
         isLoadMore = true
+        getGamesRepository.getGames(page: currentPage + 1, keyword: self.keyword)
+            .observe(on: MainScheduler.instance)
+            .subscribe { result in
+                self.currentPage = self.currentPage + 1
+                self.games.append(contentsOf: result.results ?? [])
+                self.enableLoadMore = !(result.next ?? "").isEmpty
+            } onError: { error in
+                self.error = error
+            } onCompleted: {
+                self.isLoadMore = false
+            }
+            .disposed(by: disposeBag)
     }
     
     func getNextPageIfNecessary(encounteredIndex: Int) {

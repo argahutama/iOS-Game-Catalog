@@ -6,11 +6,8 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol GameDetailRepository {
-    func getGame(
-        id: Int,
-        onSuccess: @escaping (_ game: Game?) -> Void,
-        onFailure: @escaping (_ error: Error) -> Void
-    )
+    func getGame(id: Int) -> Observable<Game>
 }

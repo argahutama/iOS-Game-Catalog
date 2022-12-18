@@ -8,7 +8,8 @@
 import Foundation
 
 class EditProfileViewModel: ObservableObject {
-    let repository: UserRepository = UserRepositoryImpl()
+    private let repository: UserRepository = UserRepositoryImpl()
+    
     @Published var myProfile = Profile()
     
     init() {

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol FavoriteGameRepository {
-    func getAllFavoriteGames(completion: @escaping(_ games: [Game]) -> Void)
-    func addFavorite(game: Game, completion: @escaping () -> Void)
-    func findData(gameId: Int, completion: @escaping (_ isExist: Bool) -> Void)
-    func removeFavorite(gameId: Int, completion: @escaping () -> Void)
+    func getAllFavoriteGames() -> Observable<[Game]>
+    func addFavorite(game: Game) -> Observable<Void>
+    func findData(gameId: Int) -> Observable<Bool>
+    func removeFavorite(gameId: Int) -> Observable<Void>
 }
