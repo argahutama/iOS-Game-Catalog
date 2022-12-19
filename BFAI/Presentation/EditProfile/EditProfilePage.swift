@@ -12,46 +12,38 @@ struct EditProfilePage: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Name")
-            TextField("Name", text: $viewModel.myProfile.name)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 4.0, style: .continuous)
-                .stroke(.gray, lineWidth: 1.0))
-                .onChange(of: viewModel.myProfile.name) { newValue in
+            BaseField(
+                title: "Name",
+                placeholder: "Name",
+                text: $viewModel.myProfile.name,
+                onChange: { _ in
                     self.viewModel.setNewProfile()
                 }
-                .padding(.bottom, 12)
-            
-            Text("City")
-            TextField("City", text: $viewModel.myProfile.city.toUnwrapped(defaultValue: ""))
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 4.0, style: .continuous)
-                .stroke(.gray, lineWidth: 1.0))
-                .onChange(of: viewModel.myProfile.city ?? "") { newValue in
+            )
+            BaseField(
+                title: "City",
+                placeholder: "City",
+                text: $viewModel.myProfile.city.toUnwrapped(defaultValue: ""),
+                onChange: { _ in
                     self.viewModel.setNewProfile()
                 }
-                .padding(.bottom, 12)
-            
-            Text("Working At")
-            TextField("Working At", text: $viewModel.myProfile.workingAt.toUnwrapped(defaultValue: ""))
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 4.0, style: .continuous)
-                .stroke(.gray, lineWidth: 1.0))
-                .onChange(of: viewModel.myProfile.workingAt ?? "") { newValue in
+            )
+            BaseField(
+                title: "Working At",
+                placeholder: "Working At",
+                text: $viewModel.myProfile.workingAt.toUnwrapped(defaultValue: ""),
+                onChange: { _ in
                     self.viewModel.setNewProfile()
                 }
-                .padding(.bottom, 12)
-            
-            Text("Position")
-            TextField("Position", text: $viewModel.myProfile.position.toUnwrapped(defaultValue: ""))
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 4.0, style: .continuous)
-                .stroke(.gray, lineWidth: 1.0))
-                .onChange(of: viewModel.myProfile.position ?? "") { newValue in
+            )
+            BaseField(
+                title: "Position",
+                placeholder: "Position",
+                text: $viewModel.myProfile.position.toUnwrapped(defaultValue: ""),
+                onChange: { _ in
                     self.viewModel.setNewProfile()
                 }
-                .padding(.bottom, 12)
-            
+            )
             Spacer()
         }.padding().navigationBarTitle("Edit Profile", displayMode: .inline)
     }

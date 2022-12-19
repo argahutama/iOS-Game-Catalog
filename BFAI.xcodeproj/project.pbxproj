@@ -43,6 +43,8 @@
 		AA75263A295015FE005E63EC /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA752639295015FE005E63EC /* ProfileEntity.swift */; };
 		AA75263C29501709005E63EC /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75263B29501709005E63EC /* Mapper.swift */; };
 		AA75263E295019B9005E63EC /* PagingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75263D295019B9005E63EC /* PagingEntity.swift */; };
+		AA752641295024FC005E63EC /* BaseField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA752640295024FC005E63EC /* BaseField.swift */; };
+		AA75264329502615005E63EC /* ItemGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75264229502615005E63EC /* ItemGame.swift */; };
 		AAA7439228CDE33100B3C7B1 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA7439128CDE33100B3C7B1 /* HomePage.swift */; };
 		AAA7439728CDE3EB00B3C7B1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA7439628CDE3EB00B3C7B1 /* HomeViewModel.swift */; };
 		AAA7439B28CDE54D00B3C7B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA7439A28CDE54D00B3C7B1 /* Config.swift */; };
@@ -97,6 +99,8 @@
 		AA752639295015FE005E63EC /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
 		AA75263B29501709005E63EC /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		AA75263D295019B9005E63EC /* PagingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingEntity.swift; sourceTree = "<group>"; };
+		AA752640295024FC005E63EC /* BaseField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseField.swift; sourceTree = "<group>"; };
+		AA75264229502615005E63EC /* ItemGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGame.swift; sourceTree = "<group>"; };
 		AAA7439128CDE33100B3C7B1 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		AAA7439628CDE3EB00B3C7B1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AAA7439A28CDE54D00B3C7B1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				AAA743AE28CE1A3400B3C7B1 /* RatingView.swift */,
+				AA752640295024FC005E63EC /* BaseField.swift */,
+				AA75264229502615005E63EC /* ItemGame.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 				AA75262D29500693005E63EC /* UserUseCase.swift in Sources */,
 				AA3D101E28DE0DC90075C5E5 /* FavoriteGame.xcdatamodeld in Sources */,
 				AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */,
+				AA75264329502615005E63EC /* ItemGame.swift in Sources */,
 				AAE9029B294F42810022B52F /* UserRepository.swift in Sources */,
 				AA75263C29501709005E63EC /* Mapper.swift in Sources */,
 				AAA743AC28CE176800B3C7B1 /* Utils.swift in Sources */,
@@ -507,6 +514,7 @@
 				AA752638295015F5005E63EC /* GenreEntity.swift in Sources */,
 				AA3D102128DE10040075C5E5 /* FavoriteGameRepositoryImpl.swift in Sources */,
 				AA3D102428DE26DE0075C5E5 /* EditProfilePage.swift in Sources */,
+				AA752641295024FC005E63EC /* BaseField.swift in Sources */,
 				AAA7439B28CDE54D00B3C7B1 /* Config.swift in Sources */,
 				AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */,
 				AA56A579294F62000093FACE /* LocalDataSource.swift in Sources */,
