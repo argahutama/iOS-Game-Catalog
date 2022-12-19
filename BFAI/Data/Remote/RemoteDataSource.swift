@@ -10,8 +10,8 @@ import Alamofire
 import RxSwift
 
 protocol RemoteDataSource {
-    func getGames(page: Int, keyword: String) -> Observable<GetGamesResponse>
-    func getGame(id: Int) -> Observable<Game>
+    func getGames(page: Int, keyword: String) -> Observable<(GetGamesResponse)>
+    func getGame(id: Int) -> Observable<GameDto>
 }
 
 final class RemoteDataSourceImpl: RemoteDataSource {
@@ -44,15 +44,15 @@ final class RemoteDataSourceImpl: RemoteDataSource {
         }
     }
     
-    func getGame(id: Int) -> Observable<Game> {
-        return Observable<Game>.create { observer in
+    func getGame(id: Int) -> Observable<GameDto> {
+        return Observable<GameDto>.create { observer in
             let url = Config.baseUrl + "games/\(id)"
             
             let parameters: Parameters = [
                 "key": Config.apiKey
             ]
             
-            AF.request(url, parameters: parameters).validate().responseDecodable(of: Game.self) { response in
+            AF.request(url, parameters: parameters).validate().responseDecodable(of: GameDto.self) { response in
                 switch response.result {
                 case .success(let value):
                     observer.onNext(value)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Game: Codable, Identifiable {
+struct GameDto: Codable, Identifiable {
     let id: Int?
     let name: String?
     let description: String?
@@ -15,7 +15,7 @@ struct Game: Codable, Identifiable {
     let backgroundImage: String?
     let rating: Double?
     let playtime: Int?
-    let genres: [CommonModel]?
+    let genres: [GenreDto]?
     var isFavorite: Bool?
 
     enum CodingKeys: String, CodingKey {

@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject {
     private let useCase = Injection.sharedInstance.provideGamesUseCase()
     private let disposeBag = DisposeBag()
     
-    @Published var games = [Game]()
+    @Published var games = [GameEntity]()
     @Published var error: Error? = nil
     @Published var loading = false
     @Published var isLoadMore = false
@@ -32,8 +32,8 @@ class HomeViewModel: ObservableObject {
         useCase.getGames(page: currentPage, keyword: self.keyword)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
-                self.games = result.results ?? []
-                self.enableLoadMore = !(result.next ?? "").isEmpty
+                self.games = result.items
+                self.enableLoadMore = !(result.nextPageUrl ?? "").isEmpty
             } onError: { error in
                 self.error = error
             } onCompleted: {
@@ -51,8 +51,8 @@ class HomeViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.currentPage = self.currentPage + 1
-                self.games.append(contentsOf: result.results ?? [])
-                self.enableLoadMore = !(result.next ?? "").isEmpty
+                self.games.append(contentsOf: result.items)
+                self.enableLoadMore = !(result.nextPageUrl ?? "").isEmpty
             } onError: { error in
                 self.error = error
             } onCompleted: {

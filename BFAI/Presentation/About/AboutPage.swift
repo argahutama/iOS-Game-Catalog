@@ -27,7 +27,7 @@ struct AboutPage: View {
                     
                     Spacer()
                     
-                    Text(viewModel.myProfile.name ?? "")
+                    Text(viewModel.myProfile.name)
                         .fontWeight(.heavy)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: .infinity, alignment: .leading)

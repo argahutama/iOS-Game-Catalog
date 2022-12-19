@@ -20,7 +20,8 @@ final class GamesRepositoryImpl: GamesRepository {
         return GamesRepositoryImpl(remoteDataSource: remoteDataSource)
     }
     
-    func getGames(page: Int, keyword: String) -> Observable<GetGamesResponse> {
+    func getGames(page: Int, keyword: String) -> Observable<PagingEntity<GameEntity>> {
         return remoteDataSource.getGames(page: page, keyword: keyword)
+            .map { response in mapGamesResponseToPagingEntity(response) }
     }
 }

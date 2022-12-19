@@ -8,8 +8,8 @@
 import Foundation
 
 protocol UserUseCase {
-    func set(newProfile profile: Profile)
-    func getProfile() -> Profile?
+    func set(newProfile profile: ProfileEntity)
+    func getProfile() -> ProfileEntity
     func sync()
 }
 
@@ -21,11 +21,11 @@ class UserUseCaseImpl: UserUseCase {
         self.repository = repository
     }
     
-    func set(newProfile profile: Profile) {
+    func set(newProfile profile: ProfileEntity) {
         repository.set(newProfile: profile)
     }
     
-    func getProfile() -> Profile? {
+    func getProfile() -> ProfileEntity {
         return repository.getProfile()
     }
     

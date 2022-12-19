@@ -10,12 +10,12 @@ import CoreData
 import RxSwift
 
 protocol LocalDataSource {
-    func getAllFavoriteGames() -> Observable<[Game]>
-    func addFavorite(game: Game) -> Observable<Void>
+    func getAllFavoriteGames() -> Observable<[GameDto]>
+    func addFavorite(game: GameDto) -> Observable<Void>
     func findGameData(gameId: Int) -> Observable<Bool>
     func removeFavorite(gameId: Int) -> Observable<Void>
-    func set(newProfile profile: Profile)
-    func getProfile() -> Profile?
+    func set(newProfile profile: ProfileDto)
+    func getProfile() -> ProfileDto?
     func sync()
 }
 
@@ -49,15 +49,15 @@ final class LocalDataSourceImpl: LocalDataSource {
         }
     }
     
-    func getAllFavoriteGames() -> Observable<[Game]> {
-        return Observable<[Game]>.create { observer in
+    func getAllFavoriteGames() -> Observable<[GameDto]> {
+        return Observable<[GameDto]>.create { observer in
             self.taskContext.perform {
                 let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteGame")
                 do {
                     let results = try self.taskContext.fetch(fetchRequest)
-                    var favoriteGames: [Game] = []
+                    var favoriteGames: [GameDto] = []
                     for result in results {
-                        let game: Game = Game(
+                        let game: GameDto = GameDto(
                             id: result.value(forKeyPath: "gameId") as? Int,
                             name: result.value(forKeyPath: "name") as? String,
                             description: nil,
@@ -82,7 +82,7 @@ final class LocalDataSourceImpl: LocalDataSource {
         }
     }
     
-    func addFavorite(game: Game) -> Observable<Void> {
+    func addFavorite(game: GameDto) -> Observable<Void> {
         return Observable<Void>.create { observer in
             self.taskContext.performAndWait {
                 if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGame", in: self.taskContext) {
@@ -154,14 +154,14 @@ final class LocalDataSourceImpl: LocalDataSource {
         }
     }
     
-    func set(newProfile profile: Profile) {
+    func set(newProfile profile: ProfileDto) {
         if let encoded = try? JSONEncoder().encode(profile) {
             UserDefaults.standard.set(encoded, forKey: "profile")
         }
     }
     
-    func getProfile() -> Profile? {
-        if let data = UserDefaults.standard.object(forKey: "profile") as? Data,let profile = try? JSONDecoder().decode(Profile.self, from: data) {
+    func getProfile() -> ProfileDto? {
+        if let data = UserDefaults.standard.object(forKey: "profile") as? Data,let profile = try? JSONDecoder().decode(ProfileDto.self, from: data) {
             return profile
         }
         return nil

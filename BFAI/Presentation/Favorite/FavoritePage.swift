@@ -16,7 +16,7 @@ struct FavoritePage: View {
             let withIndex = viewModel.games.enumerated().map({ $0 })
             if (!viewModel.games.isEmpty) {
                 List(withIndex, id: \.element.id) { i, game in
-                    NavigationLink(destination: DetailPage(gameId: game.id ?? 0)) {
+                    NavigationLink(destination: DetailPage(gameId: game.id)) {
                         HStack {
                             KFImage.url(URL(string: game.backgroundImage ?? ""))
                                 .placeholder { p in ProgressView() }
@@ -26,7 +26,7 @@ struct FavoritePage: View {
                                 .cornerRadius(8)
                                 .clipped()
                             VStack(alignment: .leading, spacing: 12) {
-                                Text(game.name ?? "").font(.system(size: 16))
+                                Text(game.name).font(.system(size: 16))
                                 
                                 Text(
                                     Utils.formattedDateFromString(

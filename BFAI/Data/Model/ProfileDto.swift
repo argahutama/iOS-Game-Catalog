@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Profile: Codable {
+struct ProfileDto: Codable {
     var name: String? = "Arga Hutama"
     var profilePicture: String? = "https://avatars.githubusercontent.com/u/58361416?v=4"
     var city: String? = "Surakarta"

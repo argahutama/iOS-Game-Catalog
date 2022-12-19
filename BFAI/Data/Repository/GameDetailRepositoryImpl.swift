@@ -19,7 +19,8 @@ final class GameDetailRepositoryImpl: GameDetailRepository {
         return GameDetailRepositoryImpl(remoteDataSource: remoteDataSource)
     }
     
-    func getGame(id: Int) -> Observable<Game> {
+    func getGame(id: Int) -> Observable<GameEntity> {
         return remoteDataSource.getGame(id: id)
+            .map { dto in mapGameDtoToEntity(dto) }
     }
 }

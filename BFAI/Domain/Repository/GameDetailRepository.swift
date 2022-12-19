@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol GameDetailRepository {
-    func getGame(id: Int) -> Observable<Game>
+    func getGame(id: Int) -> Observable<GameEntity>
 }

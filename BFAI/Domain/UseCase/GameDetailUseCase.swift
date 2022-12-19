@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol GameDetailUseCase {
-    func getGame(id: Int) -> Observable<Game>
+    func getGame(id: Int) -> Observable<GameEntity>
 }
 
 class GameDetailUseCaseImpl: GameDetailUseCase {
@@ -19,7 +19,7 @@ class GameDetailUseCaseImpl: GameDetailUseCase {
         self.repository = repository
     }
     
-    func getGame(id: Int) -> Observable<Game> {
+    func getGame(id: Int) -> Observable<GameEntity> {
         return repository.getGame(id: id)
     }
 }

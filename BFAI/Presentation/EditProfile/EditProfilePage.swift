@@ -13,11 +13,11 @@ struct EditProfilePage: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Name")
-            TextField("Name", text: $viewModel.myProfile.name.toUnwrapped(defaultValue: ""))
+            TextField("Name", text: $viewModel.myProfile.name)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 4.0, style: .continuous)
                 .stroke(.gray, lineWidth: 1.0))
-                .onChange(of: viewModel.myProfile.name ?? "") { newValue in
+                .onChange(of: viewModel.myProfile.name) { newValue in
                     self.viewModel.setNewProfile()
                 }
                 .padding(.bottom, 12)

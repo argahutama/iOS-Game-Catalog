@@ -14,7 +14,7 @@ class DetailViewModel: ObservableObject {
     private let favGameUseCase: FavoriteGameUseCase = Injection.sharedInstance.provideFavoriteGameUseCase()
     private let disposeBag = DisposeBag()
     
-    @Published var game: Game? = nil
+    @Published var game: GameEntity? = nil
     @Published var error: Error? = nil
     @Published var loading = true
     
@@ -36,7 +36,7 @@ class DetailViewModel: ObservableObject {
         guard game != nil else { return }
         
         if (game!.isFavorite == true) {
-            favGameUseCase.removeFavorite(gameId: self.game!.id ?? -1)
+            favGameUseCase.removeFavorite(gameId: self.game!.id)
                 .observe(on: MainScheduler.instance)
                 .subscribe { result in
                     self.game?.isFavorite = false
@@ -63,7 +63,7 @@ class DetailViewModel: ObservableObject {
     func checkIsFavorite() {
         guard game != nil else { return }
         
-        favGameUseCase.findData(gameId: game!.id ?? -1)
+        favGameUseCase.findData(gameId: game!.id)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.game?.isFavorite = result

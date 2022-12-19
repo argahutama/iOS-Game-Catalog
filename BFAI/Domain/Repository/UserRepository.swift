@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserRepository {
-    func set(newProfile profile: Profile)
-    func getProfile() -> Profile?
+    func set(newProfile profile: ProfileEntity)
+    func getProfile() -> ProfileEntity
     func sync()
 }

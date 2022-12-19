@@ -19,12 +19,17 @@ final class FavoriteGameRepositoryImpl: FavoriteGameRepository {
         return FavoriteGameRepositoryImpl(localDataSource: localDataSource)
     }
     
-    func getAllFavoriteGames() -> Observable<[Game]> {
+    func getAllFavoriteGames() -> Observable<[GameEntity]> {
         return localDataSource.getAllFavoriteGames()
+            .map { dtos in
+                dtos.map { dto in
+                    mapGameDtoToEntity(dto)
+                }
+            }
     }
     
-    func addFavorite(game: Game) -> Observable<Void> {
-        return localDataSource.addFavorite(game: game)
+    func addFavorite(game: GameEntity) -> Observable<Void> {
+        return localDataSource.addFavorite(game: mapGameEntityToDto(game))
     }
     
     func findData(gameId: Int) -> Observable<Bool> {

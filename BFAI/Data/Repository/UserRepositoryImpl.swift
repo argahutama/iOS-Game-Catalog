@@ -18,12 +18,12 @@ final class UserRepositoryImpl: UserRepository {
         return UserRepositoryImpl(localDataSource: localDataSource)
     }
     
-    func set(newProfile profile: Profile) {
-        localDataSource.set(newProfile: profile)
+    func set(newProfile profile: ProfileEntity) {
+        localDataSource.set(newProfile: mapProfileEntityToDto(profile))
     }
     
-    func getProfile() -> Profile? {
-        return localDataSource.getProfile()
+    func getProfile() -> ProfileEntity {
+        return mapProfileDtoToEntity(localDataSource.getProfile())
     }
     
     func sync() {

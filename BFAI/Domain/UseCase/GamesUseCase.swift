@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol GamesUseCase {
-    func getGames(page: Int, keyword: String) -> Observable<GetGamesResponse>
+    func getGames(page: Int, keyword: String) -> Observable<PagingEntity<GameEntity>>
 }
 
 class GameUseCaseImpl: GamesUseCase {
@@ -20,7 +20,7 @@ class GameUseCaseImpl: GamesUseCase {
         self.repository = repository
     }
     
-    func getGames(page: Int, keyword: String) -> Observable<GetGamesResponse> {
+    func getGames(page: Int, keyword: String) -> Observable<PagingEntity<GameEntity>> {
         return repository.getGames(page: page, keyword: keyword)
     }
 }

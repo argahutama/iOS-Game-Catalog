@@ -82,7 +82,7 @@ struct DetailPage: View {
                                         .foregroundColor(.gray)
                                         .padding(.top)
                                     
-                                    ForEach(viewModel.game?.genres ?? [CommonModel]()) { genre in
+                                    ForEach(viewModel.game?.genres ?? []) { genre in
                                         Text(genre.name)
                                     }
                                 }
