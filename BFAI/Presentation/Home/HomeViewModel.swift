@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.games = result.items
-                self.enableLoadMore = !(result.nextPageUrl ?? "").isEmpty
+                self.enableLoadMore = result.enableLoadMore
             } onError: { error in
                 self.error = error
             } onCompleted: {
@@ -52,7 +52,7 @@ class HomeViewModel: ObservableObject {
             .subscribe { result in
                 self.currentPage = self.currentPage + 1
                 self.games.append(contentsOf: result.items)
-                self.enableLoadMore = !(result.nextPageUrl ?? "").isEmpty
+                self.enableLoadMore = result.enableLoadMore
             } onError: { error in
                 self.error = error
             } onCompleted: {
