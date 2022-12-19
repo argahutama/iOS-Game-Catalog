@@ -31,34 +31,35 @@ final class Injection: NSObject {
     
     private func provideTaskContext() -> NSManagedObjectContext {
         let taskContext = providePersistentContainer().newBackgroundContext()
-        taskContext.undoManager = nil
         
+        taskContext.undoManager = nil
         taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
         return taskContext
     }
     
+    private func provideLocalDataSource() -> LocalDataSource {
+        return LocalDataSourceImpl.sharedInstance(provideTaskContext())
+    }
+    
+    private func provideRemoteDataSource() -> RemoteDataSource {
+        return RemoteDataSourceImpl.sharedInstance()
+    }
+    
     private func provideGamesRepository() -> GamesRepository {
-        let remote: RemoteDataSource = RemoteDataSourceImpl.sharedInstance()
-
-        return GamesRepositoryImpl.sharedInstance(remote)
+        return GamesRepositoryImpl.sharedInstance(provideRemoteDataSource())
     }
     
     private func provideGameDetailRepository() -> GameDetailRepository {
-        let remote: RemoteDataSource = RemoteDataSourceImpl.sharedInstance()
-
-        return GameDetailRepositoryImpl.sharedInstance(remote)
+        return GameDetailRepositoryImpl.sharedInstance(provideRemoteDataSource())
     }
     
     private func provideFavoriteGameRepository() -> FavoriteGameRepository {
-        let local: LocalDataSource = LocalDataSourceImpl.sharedInstance(provideTaskContext())
-
-        return FavoriteGameRepositoryImpl.sharedInstance(local)
+        return FavoriteGameRepositoryImpl.sharedInstance(provideLocalDataSource())
     }
     
     private func provideUserRepository() -> UserRepository {
-        let local: LocalDataSource = LocalDataSourceImpl.sharedInstance(provideTaskContext())
-
-        return UserRepositoryImpl.sharedInstance(local)
+        return UserRepositoryImpl.sharedInstance(provideLocalDataSource())
     }
 
     func provideGamesUseCase() -> GamesUseCase {
@@ -68,16 +69,19 @@ final class Injection: NSObject {
 
     func provideGameDetailUseCase() -> GameDetailUseCase {
         let repository = provideGameDetailRepository()
+        
         return GameDetailUseCaseImpl(repository: repository)
     }
     
     func provideFavoriteGameUseCase() -> FavoriteGameUseCase {
         let repository = provideFavoriteGameRepository()
+        
         return FavoriteGameUseCaseImpl(repository: repository)
     }
     
     func provideUserUseCase() -> UserUseCase {
         let repository = provideUserRepository()
+        
         return UserUseCaseImpl(repository: repository)
     }
 }
