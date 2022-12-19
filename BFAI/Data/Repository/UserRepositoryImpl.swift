@@ -7,21 +7,26 @@
 
 import Foundation
 
-class UserRepositoryImpl: UserRepository {
+final class UserRepositoryImpl: UserRepository {
+    private let localDataSource: LocalDataSource
+    
+    private init(localDataSource: LocalDataSource) {
+        self.localDataSource = localDataSource
+    }
+    
+    static let sharedInstance: (LocalDataSource) -> UserRepository = { localDataSource in
+        return UserRepositoryImpl(localDataSource: localDataSource)
+    }
+    
     func set(newProfile profile: Profile) {
-        if let encoded = try? JSONEncoder().encode(profile) {
-            UserDefaults.standard.set(encoded, forKey: "profile")
-        }
+        localDataSource.set(newProfile: profile)
     }
     
     func getProfile() -> Profile? {
-        if let data = UserDefaults.standard.object(forKey: "profile") as? Data,let profile = try? JSONDecoder().decode(Profile.self, from: data) {
-            return profile
-        }
-        return nil
+        return localDataSource.getProfile()
     }
     
     func sync() {
-        UserDefaults.standard.synchronize()
+        localDataSource.sync()
     }
 }

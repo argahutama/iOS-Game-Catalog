@@ -8,7 +8,7 @@
 import Foundation
 
 class AboutViewModel: ObservableObject {
-    private let repository = UserRepositoryImpl()
+    private let useCase = Injection.sharedInstance.provideUserUseCase()
     
     @Published var myProfile = Profile()
     
@@ -17,7 +17,7 @@ class AboutViewModel: ObservableObject {
     }
     
     func getProfile() {
-        if let profile = repository.getProfile() {
+        if let profile = useCase.getProfile() {
             self.myProfile = profile
         }
     }

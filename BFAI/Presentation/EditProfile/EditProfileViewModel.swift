@@ -8,17 +8,17 @@
 import Foundation
 
 class EditProfileViewModel: ObservableObject {
-    private let repository: UserRepository = UserRepositoryImpl()
+    private let useCase: UserUseCase = Injection.sharedInstance.provideUserUseCase()
     
     @Published var myProfile = Profile()
     
     init() {
-        if let profile = repository.getProfile() {
+        if let profile = useCase.getProfile() {
             self.myProfile = profile
         }
     }
     
     func setNewProfile() {
-        repository.set(newProfile: myProfile)
+        useCase.set(newProfile: myProfile)
     }
 }

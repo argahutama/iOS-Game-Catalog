@@ -10,8 +10,8 @@ import RxSwift
 
 class DetailViewModel: ObservableObject {
     
-    private let repository: GameDetailRepository = GameDetailRepositoryImpl()
-    private let favGameRepository: FavoriteGameRepositoryImpl = FavoriteGameRepositoryImpl()
+    private let gameDetailUseCase: GameDetailUseCase = Injection.sharedInstance.provideGameDetailUseCase()
+    private let favGameUseCase: FavoriteGameUseCase = Injection.sharedInstance.provideFavoriteGameUseCase()
     private let disposeBag = DisposeBag()
     
     @Published var game: Game? = nil
@@ -19,7 +19,7 @@ class DetailViewModel: ObservableObject {
     @Published var loading = true
     
     func getGameDetail(id: Int) {
-        repository.getGame(id: id)
+        gameDetailUseCase.getGame(id: id)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.game = result
@@ -36,7 +36,7 @@ class DetailViewModel: ObservableObject {
         guard game != nil else { return }
         
         if (game!.isFavorite == true) {
-            favGameRepository.removeFavorite(gameId: self.game!.id ?? -1)
+            favGameUseCase.removeFavorite(gameId: self.game!.id ?? -1)
                 .observe(on: MainScheduler.instance)
                 .subscribe { result in
                     self.game?.isFavorite = false
@@ -47,7 +47,7 @@ class DetailViewModel: ObservableObject {
                 }
                 .disposed(by: disposeBag)
         } else {
-            favGameRepository.addFavorite(game: self.game!)
+            favGameUseCase.addFavorite(game: self.game!)
                 .observe(on: MainScheduler.instance)
                 .subscribe { result in
                     self.game?.isFavorite = true
@@ -58,12 +58,12 @@ class DetailViewModel: ObservableObject {
                 }
                 .disposed(by: disposeBag)
         }
-    }
+    }   
     
     func checkIsFavorite() {
         guard game != nil else { return }
         
-        favGameRepository.findData(gameId: game!.id ?? -1)
+        favGameUseCase.findData(gameId: game!.id ?? -1)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.game?.isFavorite = result

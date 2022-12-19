@@ -14,7 +14,7 @@ class HomeViewModel: ObservableObject {
         getGames()
     }
     
-    private let getGamesRepository = GamesRepositoryImpl()
+    private let useCase = Injection.sharedInstance.provideGamesUseCase()
     private let disposeBag = DisposeBag()
     
     @Published var games = [Game]()
@@ -29,7 +29,7 @@ class HomeViewModel: ObservableObject {
     func getGames() {
         currentPage = 1
         loading = true
-        getGamesRepository.getGames(page: currentPage, keyword: self.keyword)
+        useCase.getGames(page: currentPage, keyword: self.keyword)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.games = result.results ?? []
@@ -47,7 +47,7 @@ class HomeViewModel: ObservableObject {
             return
         }
         isLoadMore = true
-        getGamesRepository.getGames(page: currentPage + 1, keyword: self.keyword)
+        useCase.getGames(page: currentPage + 1, keyword: self.keyword)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.currentPage = self.currentPage + 1

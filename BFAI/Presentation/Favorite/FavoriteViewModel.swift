@@ -13,14 +13,14 @@ class FavoriteViewModel: ObservableObject {
         getFavoriteGames()
     }
     
-    private let repository = FavoriteGameRepositoryImpl()
+    private let useCase = Injection.sharedInstance.provideFavoriteGameUseCase()
     private let disposeBag = DisposeBag()
     
     @Published var games = [Game]()
     @Published var error: Error? = nil
     
     func getFavoriteGames() {
-        repository.getAllFavoriteGames()
+        useCase.getAllFavoriteGames()
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.games = result
@@ -31,7 +31,7 @@ class FavoriteViewModel: ObservableObject {
     }
     
     func removeFavorite(at index: Int) {
-        repository.removeFavorite(gameId: games[index].id ?? -1)
+        useCase.removeFavorite(gameId: games[index].id ?? -1)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.games.remove(at: index)
