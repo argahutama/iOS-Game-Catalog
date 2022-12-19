@@ -17,23 +17,23 @@ protocol FavoriteGameUseCase {
 
 class FavoriteGameUseCaseImpl: FavoriteGameUseCase {
     private let repository: FavoriteGameRepository
-    
+
     init (repository: FavoriteGameRepository) {
         self.repository = repository
     }
-    
+
     func getAllFavoriteGames() -> Observable<[GameEntity]> {
         return repository.getAllFavoriteGames()
     }
-    
+
     func addFavorite(game: GameEntity) -> Observable<Void> {
         return repository.addFavorite(game: game)
     }
-    
+
     func findData(gameId: Int) -> Observable<Bool> {
         return repository.findData(gameId: gameId)
     }
-    
+
     func removeFavorite(gameId: Int) -> Observable<Void> {
         return repository.removeFavorite(gameId: gameId)
     }

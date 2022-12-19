@@ -12,8 +12,8 @@ struct PagingEntity<T> {
     let count: Int
     let nextPageUrl: String?
     let previousPageUrl: String?
-    
-    var enableLoadMore: Bool {
-        get { return !(nextPageUrl ?? "").isEmpty }
+
+    func isEnableLoadMore() -> Bool {
+        return !(nextPageUrl ?? "").isEmpty
     }
 }

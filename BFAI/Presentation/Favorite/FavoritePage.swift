@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FavoritePage: View {
     @StateObject var viewModel = FavoriteViewModel()
-    
+
     var body: some View {
         VStack {
             let withIndex = viewModel.games.enumerated().map({ $0 })
-            if (!viewModel.games.isEmpty) {
+            if !viewModel.games.isEmpty {
                 List(withIndex, id: \.element.id) { index, game in
                     ItemGame(
                         game: game,

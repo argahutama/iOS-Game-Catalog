@@ -14,11 +14,11 @@ protocol GameDetailUseCase {
 
 class GameDetailUseCaseImpl: GameDetailUseCase {
     private let repository: GameDetailRepository
-    
+
     init(repository: GameDetailRepository) {
         self.repository = repository
     }
-    
+
     func getGame(id: Int) -> Observable<GameEntity> {
         return repository.getGame(id: id)
     }

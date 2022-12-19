@@ -13,13 +13,13 @@ protocol GamesUseCase {
 }
 
 class GameUseCaseImpl: GamesUseCase {
-    
+
     private let repository: GamesRepository
-    
+
     init(repository: GamesRepository) {
         self.repository = repository
     }
-    
+
     func getGames(page: Int, keyword: String) -> Observable<PagingEntity<GameEntity>> {
         return repository.getGames(page: page, keyword: keyword)
     }

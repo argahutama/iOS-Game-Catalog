@@ -64,7 +64,6 @@ private func mapGenreEntityToDto(_ genreEntity: GenreEntity) -> GenreDto {
     )
 }
 
-
 func mapProfileDtoToEntity(_ profileDto: ProfileDto?) -> ProfileEntity {
     return ProfileEntity(
         name: profileDto?.name ?? "",

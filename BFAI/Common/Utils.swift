@@ -13,7 +13,7 @@ class Utils {
         withFormat format: String = "dd MMMM yyyy"
     ) -> String {
         guard let dateString = dateString else { return "" }
-        
+
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
 

@@ -12,12 +12,12 @@ struct ItemGame: View {
     let game: GameEntity
     let index: Int
     let onAppear: (Int) -> Void
-    
+
     var body: some View {
         NavigationLink(destination: DetailPage(gameId: game.id)) {
             HStack {
                 KFImage.url(URL(string: game.backgroundImage ?? ""))
-                    .placeholder { p in ProgressView() }
+                    .placeholder { _ in ProgressView() }
                     .resizable()
                     .scaledToFill()
                     .frame(width: 80, height: 80)
@@ -30,7 +30,7 @@ struct ItemGame: View {
                             minWidth: 100,
                             alignment: .leading
                         )
-                    
+
                     Text(
                         Utils.formattedDateFromString(
                             dateString: game.released ?? ""
@@ -42,7 +42,7 @@ struct ItemGame: View {
                         minWidth: 100,
                         alignment: .leading
                     )
-                    
+
                     RatingView(rating: game.rating ?? 0)
                 }.padding()
             }.onAppear {

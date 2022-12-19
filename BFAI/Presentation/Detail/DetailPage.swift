@@ -11,11 +11,11 @@ import Kingfisher
 struct DetailPage: View {
     let gameId: Int
     @StateObject var viewModel = DetailViewModel()
-    
+
     init(gameId: Int) {
         self.gameId = gameId
     }
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -31,9 +31,9 @@ struct DetailPage: View {
                                     alignment: .center
                                 )
                                 .clipped()
-                            
+
                             Spacer()
-                            
+
                             Text(viewModel.game?.name ?? "")
                                 .fontWeight(.heavy)
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -46,7 +46,7 @@ struct DetailPage: View {
                                         trailing: 20
                                     )
                                 )
-                            
+
                             Text("\(Utils.formattedDateFromString(dateString: viewModel.game?.released) )")
                                 .font(.system(size: 14))
                                 .foregroundColor(.gray)
@@ -58,30 +58,29 @@ struct DetailPage: View {
                                         trailing: 20
                                     )
                                 )
-                            
+
                             Spacer()
-                            
-                            
+
                             Text(viewModel.game?.description?.htmlStripped ?? "")
                                 .frame(
                                     maxWidth: .infinity,
                                     alignment: .leading
                                 )
                                 .padding()
-                            
+
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
                                     Text("Rating")
                                         .fontWeight(.bold)
                                         .foregroundColor(.gray)
-                                    
+
                                     Text(String(viewModel.game?.rating ?? 0.0))
-                                    
+
                                     Text("Genre")
                                         .fontWeight(.bold)
                                         .foregroundColor(.gray)
                                         .padding(.top)
-                                    
+
                                     ForEach(viewModel.game?.genres ?? []) { genre in
                                         Text(genre.name)
                                     }
@@ -91,12 +90,12 @@ struct DetailPage: View {
                                     maxWidth: .infinity,
                                     alignment: .leading
                                 )
-                                
+
                                 VStack(alignment: .leading) {
                                     Text("Average playtime")
                                         .fontWeight(.bold)
                                         .foregroundColor(.gray)
-                                    
+
                                     Text("\(viewModel.game?.playtime ?? 0) Hours")
                                 }
                                 .frame(
@@ -117,27 +116,30 @@ struct DetailPage: View {
             .onAppear {
                 viewModel.getGameDetail(id: gameId)
             }
-            
-            if (!viewModel.loading) {
+
+            if !viewModel.loading {
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button(action: {
-                            viewModel.toggleFavorite()
-                        }) {
-                            if viewModel.game?.isFavorite == true {
-                                Image(systemName: "heart.fill")
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.red)
-                                    .padding(.all, 6)
-                            } else {
-                                Image(systemName: "heart")
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.red)
-                                    .padding(.all, 6)
+                        Button(
+                            action: {
+                                viewModel.toggleFavorite()
+                            },
+                            label: {
+                                if viewModel.game?.isFavorite == true {
+                                    Image(systemName: "heart.fill")
+                                        .frame(width: 50, height: 50)
+                                        .foregroundColor(.red)
+                                        .padding(.all, 6)
+                                } else {
+                                    Image(systemName: "heart")
+                                        .frame(width: 50, height: 50)
+                                        .foregroundColor(.red)
+                                        .padding(.all, 6)
+                                }
                             }
-                        }
+                        )
                         .background(.yellow)
                         .cornerRadius(100)
                         .padding()

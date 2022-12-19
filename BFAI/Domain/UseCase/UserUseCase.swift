@@ -14,21 +14,21 @@ protocol UserUseCase {
 }
 
 class UserUseCaseImpl: UserUseCase {
-    
+
     private let repository: UserRepository
-    
+
     init(repository: UserRepository) {
         self.repository = repository
     }
-    
+
     func set(newProfile profile: ProfileEntity) {
         repository.set(newProfile: profile)
     }
-    
+
     func getProfile() -> ProfileEntity {
         return repository.getProfile()
     }
-    
+
     func sync() {
         repository.sync()
     }

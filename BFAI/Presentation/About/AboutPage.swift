@@ -10,7 +10,7 @@ import Kingfisher
 
 struct AboutPage: View {
     @StateObject var viewModel = AboutViewModel()
-    
+
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
@@ -24,9 +24,9 @@ struct AboutPage: View {
                             alignment: .center
                         )
                         .clipped()
-                    
+
                     Spacer()
-                    
+
                     Text(viewModel.myProfile.name)
                         .fontWeight(.heavy)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -39,7 +39,7 @@ struct AboutPage: View {
                                 trailing: 20
                             )
                         )
-                    
+
                     Text("\(viewModel.myProfile.position ?? "") @\(viewModel.myProfile.workingAt ?? "")")
                         .padding(
                             EdgeInsets(
@@ -49,7 +49,7 @@ struct AboutPage: View {
                                 trailing: 20
                             )
                         )
-                    
+
                     Text(viewModel.myProfile.city ?? "")
                         .padding(
                             EdgeInsets(

@@ -18,19 +18,24 @@ final class RemoteDataSourceImpl: RemoteDataSource {
     static let sharedInstance: () -> RemoteDataSource = {
         return RemoteDataSourceImpl()
     }
-    
+
     func getGames(page: Int, keyword: String) -> Observable<GetGamesResponse> {
         return Observable<GetGamesResponse>.create { observer in
             let url = Config.baseUrl + "games"
-            
+
             let parameters: Parameters = [
-                "key": Config.apiKey,
+                "key": Config.getApiKey(),
                 "search": keyword,
                 "page": String(page),
                 "page_size": String(10)
             ]
-            
-            AF.request(url, parameters: parameters).validate().responseDecodable(of: GetGamesResponse.self) { response in
+
+            AF.request(
+                url,
+                parameters: parameters
+            ).validate().responseDecodable(
+                of: GetGamesResponse.self
+            ) { response in
                 switch response.result {
                 case .success(let value):
                     observer.onNext(value)
@@ -39,19 +44,19 @@ final class RemoteDataSourceImpl: RemoteDataSource {
                     observer.onError(response.error!)
                 }
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func getGame(id: Int) -> Observable<GameDto> {
         return Observable<GameDto>.create { observer in
             let url = Config.baseUrl + "games/\(id)"
-            
+
             let parameters: Parameters = [
-                "key": Config.apiKey
+                "key": Config.getApiKey()
             ]
-            
+
             AF.request(url, parameters: parameters).validate().responseDecodable(of: GameDto.self) { response in
                 switch response.result {
                 case .success(let value):
@@ -61,7 +66,7 @@ final class RemoteDataSourceImpl: RemoteDataSource {
                     observer.onError(response.error!)
                 }
             }
-            
+
             return Disposables.create()
         }
     }

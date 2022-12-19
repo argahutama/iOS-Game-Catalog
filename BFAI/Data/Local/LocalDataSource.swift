@@ -21,15 +21,15 @@ protocol LocalDataSource {
 
 final class LocalDataSourceImpl: LocalDataSource {
     private let taskContext: NSManagedObjectContext
-    
+
     private init(taskContext: NSManagedObjectContext) {
         self.taskContext = taskContext
     }
-    
+
     static let sharedInstance: (NSManagedObjectContext) -> LocalDataSource = { taskContext in
         return LocalDataSourceImpl(taskContext: taskContext)
     }
-    
+
     private func getMaxId(completion: (_ maxId: Int) -> Void) {
         taskContext.performAndWait {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteGame")
@@ -48,7 +48,7 @@ final class LocalDataSourceImpl: LocalDataSource {
             }
         }
     }
-    
+
     func getAllFavoriteGames() -> Observable<[GameDto]> {
         return Observable<[GameDto]>.create { observer in
             self.taskContext.perform {
@@ -68,7 +68,7 @@ final class LocalDataSourceImpl: LocalDataSource {
                             genres: nil,
                             isFavorite: true
                         )
-                        
+
                         favoriteGames.append(game)
                     }
                     observer.onNext(favoriteGames)
@@ -77,17 +77,17 @@ final class LocalDataSourceImpl: LocalDataSource {
                     observer.onError(error)
                 }
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func addFavorite(game: GameDto) -> Observable<Void> {
         return Observable<Void>.create { observer in
             self.taskContext.performAndWait {
                 if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGame", in: self.taskContext) {
                     let data = NSManagedObject(entity: entity, insertInto: self.taskContext)
-                    
+
                     self.getMaxId { (id) in
                         data.setValue(id + 1, forKey: "id")
                         data.setValue(game.id, forKey: "gameId")
@@ -96,7 +96,7 @@ final class LocalDataSourceImpl: LocalDataSource {
                         data.setValue(game.backgroundImage, forKey: "backgroundImage")
                         data.setValue(game.playtime, forKey: "playtime")
                         data.setValue(game.rating, forKey: "rating")
-                        
+
                         do {
                             try self.taskContext.save()
                             observer.onNext(Void())
@@ -107,11 +107,11 @@ final class LocalDataSourceImpl: LocalDataSource {
                     }
                 }
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func findGameData(gameId: Int) -> Observable<Bool> {
         return Observable<Bool>.create { observer in
             self.taskContext.perform {
@@ -119,7 +119,7 @@ final class LocalDataSourceImpl: LocalDataSource {
                 fetchRequest.fetchLimit = 1
                 fetchRequest.predicate = NSPredicate(format: "gameId == \(gameId)")
                 do {
-                    if let _ = try self.taskContext.fetch(fetchRequest).first {
+                    if try self.taskContext.fetch(fetchRequest).first != nil {
                         observer.onNext(true)
                         observer.onCompleted()
                     } else {
@@ -130,43 +130,49 @@ final class LocalDataSourceImpl: LocalDataSource {
                     observer.onError(error)
                 }
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func removeFavorite(gameId: Int) -> Observable<Void> {
         return Observable<Void>.create { observer in
             self.taskContext.perform {
                 let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteGame")
                 fetchRequest.predicate = NSPredicate(format: "gameId == \(gameId)")
-                
+
                 let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                 batchDeleteRequest.resultType = .resultTypeCount
-                
-                if let batchDeleteResult = try? self.taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult, batchDeleteResult.result != nil {
+
+                if let batchDeleteResult = try? self.taskContext.execute(
+                    batchDeleteRequest
+                ) as? NSBatchDeleteResult, batchDeleteResult.result != nil {
                     observer.onNext(Void())
                 }
                 observer.onCompleted()
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func set(newProfile profile: ProfileDto) {
         if let encoded = try? JSONEncoder().encode(profile) {
             UserDefaults.standard.set(encoded, forKey: "profile")
         }
     }
-    
+
     func getProfile() -> ProfileDto? {
-        if let data = UserDefaults.standard.object(forKey: "profile") as? Data,let profile = try? JSONDecoder().decode(ProfileDto.self, from: data) {
+        if let data = UserDefaults.standard.object(
+            forKey: "profile"
+        ) as? Data, let profile = try? JSONDecoder().decode(
+            ProfileDto.self, from: data
+        ) {
             return profile
         }
         return nil
     }
-    
+
     func sync() {
         UserDefaults.standard.synchronize()
     }

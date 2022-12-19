@@ -9,23 +9,23 @@ import Foundation
 import RxSwift
 
 class HomeViewModel: ObservableObject {
-    
+
     init() {
         getGames()
     }
-    
+
     private let useCase = Injection.sharedInstance.provideGamesUseCase()
     private let disposeBag = DisposeBag()
-    
+
     @Published var games = [GameEntity]()
-    @Published var error: Error? = nil
+    @Published var error: Error?
     @Published var loading = false
     @Published var isLoadMore = false
-    
+
     var currentPage = 1
     var enableLoadMore = false
     var keyword = ""
-    
+
     func getGames() {
         currentPage = 1
         loading = true
@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.games = result.items
-                self.enableLoadMore = result.enableLoadMore
+                self.enableLoadMore = result.isEnableLoadMore()
             } onError: { error in
                 self.error = error
             } onCompleted: {
@@ -41,7 +41,7 @@ class HomeViewModel: ObservableObject {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func loadMoreGames() {
         if !enableLoadMore {
             return
@@ -50,9 +50,9 @@ class HomeViewModel: ObservableObject {
         useCase.getGames(page: currentPage + 1, keyword: self.keyword)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
-                self.currentPage = self.currentPage + 1
+                self.currentPage += 1
                 self.games.append(contentsOf: result.items)
-                self.enableLoadMore = result.enableLoadMore
+                self.enableLoadMore = result.isEnableLoadMore()
             } onError: { error in
                 self.error = error
             } onCompleted: {
@@ -60,7 +60,7 @@ class HomeViewModel: ObservableObject {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func getNextPageIfNecessary(encounteredIndex: Int) {
         guard encounteredIndex == games.count - 1 else { return }
         loadMoreGames()

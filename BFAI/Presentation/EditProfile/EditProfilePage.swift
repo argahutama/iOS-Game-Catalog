@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditProfilePage: View {
     @StateObject var viewModel = EditProfileViewModel()
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             BaseField(

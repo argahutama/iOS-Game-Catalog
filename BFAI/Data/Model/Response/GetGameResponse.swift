@@ -39,7 +39,7 @@ struct Filters: Codable {
 }
 
 struct FiltersYear: Codable {
-    let from, to: Int?
+    let from, until: Int?
     let filter: String?
     let decade: Int?
     let years: [YearYear]?

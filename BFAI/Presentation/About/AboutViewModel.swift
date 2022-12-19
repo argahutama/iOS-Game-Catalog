@@ -9,13 +9,13 @@ import Foundation
 
 class AboutViewModel: ObservableObject {
     private let useCase = Injection.sharedInstance.provideUserUseCase()
-    
+
     @Published var myProfile = ProfileEntity(name: "")
-    
+
     init() {
         getProfile()
     }
-    
+
     func getProfile() {
         self.myProfile = useCase.getProfile()
     }
