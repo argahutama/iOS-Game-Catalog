@@ -81,9 +81,7 @@ struct DetailPage: View {
                                         .foregroundColor(.gray)
                                         .padding(.top)
 
-                                    List(viewModel.game?.genreNames ?? [], id: \.self) { name in
-                                        Text(name)
-                                    }
+                                    Text(viewModel.game?.getGenreString() ?? "")
                                 }
                                 .frame(
                                     minWidth: 0,

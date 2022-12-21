@@ -17,4 +17,8 @@ struct Game: Identifiable {
     let playtime: Int
     let genreNames: [String]
     var isFavorite: Bool
+
+    func getGenreString() -> String {
+        return genreNames.joined(separator: ", ")
+    }
 }
