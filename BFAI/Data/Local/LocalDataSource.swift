@@ -170,7 +170,7 @@ final class LocalDataSourceImpl: LocalDataSource {
         ) {
             return profile
         }
-        return nil
+        return ProfileDto()
     }
 
     func sync() {
