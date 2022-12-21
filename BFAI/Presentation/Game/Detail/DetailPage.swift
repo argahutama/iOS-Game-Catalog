@@ -61,7 +61,7 @@ struct DetailPage: View {
 
                             Spacer()
 
-                            Text(viewModel.game?.description?.htmlStripped ?? "")
+                            Text(viewModel.game?.description.htmlStripped ?? "")
                                 .frame(
                                     maxWidth: .infinity,
                                     alignment: .leading
@@ -81,8 +81,8 @@ struct DetailPage: View {
                                         .foregroundColor(.gray)
                                         .padding(.top)
 
-                                    ForEach(viewModel.game?.genres ?? []) { genre in
-                                        Text(genre.name)
+                                    List(viewModel.game?.genreNames ?? [], id: \.self) { name in
+                                        Text(name)
                                     }
                                 }
                                 .frame(
@@ -114,7 +114,11 @@ struct DetailPage: View {
                 }
             }
             .onAppear {
+                viewModel.loading = true
                 viewModel.getGameDetail(id: gameId)
+            }
+            .onDisappear {
+                viewModel.game = nil
             }
 
             if !viewModel.loading {
@@ -151,6 +155,10 @@ struct DetailPage: View {
                         )
                     }
                 }
+            } else {
+                Spacer()
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+                Spacer()
             }
         }.navigationBarTitle(viewModel.game?.name ?? "Game Detail", displayMode: .inline)
     }

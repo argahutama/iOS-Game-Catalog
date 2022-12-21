@@ -13,7 +13,7 @@ class HomeViewModel: ObservableObject {
     private let useCase: GamesUseCase
     private let disposeBag = DisposeBag()
 
-    @Published var games = [GameEntity]()
+    @Published var games = [Game]()
     @Published var error: Error?
     @Published var loading = false
     @Published var isLoadMore = false
@@ -33,7 +33,9 @@ class HomeViewModel: ObservableObject {
         useCase.getGames(page: currentPage, keyword: self.keyword)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
-                self.games = result.items
+                self.games = result.items.map { item in
+                    mapGameEntityToUiModel(item)
+                }
                 self.enableLoadMore = result.isEnableLoadMore()
             } onError: { error in
                 self.error = error
@@ -52,7 +54,10 @@ class HomeViewModel: ObservableObject {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self.currentPage += 1
-                self.games.append(contentsOf: result.items)
+                let games = result.items.map { item in
+                    mapGameEntityToUiModel(item)
+                }
+                self.games.append(contentsOf: games)
                 self.enableLoadMore = result.isEnableLoadMore()
             } onError: { error in
                 self.error = error

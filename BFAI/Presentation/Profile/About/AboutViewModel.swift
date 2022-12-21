@@ -9,7 +9,7 @@ import Foundation
 
 class AboutViewModel: ObservableObject {
     private let useCase: UserUseCase
-    @Published var myProfile = ProfileEntity(name: "")
+    @Published var myProfile = Profile(name: "")
 
     init(useCase: UserUseCase) {
         self.useCase = useCase
@@ -17,6 +17,6 @@ class AboutViewModel: ObservableObject {
     }
 
     func getProfile() {
-        myProfile = useCase.getProfile()
+        myProfile = mapProfileEntityToUiModel(useCase.getProfile())
     }
 }

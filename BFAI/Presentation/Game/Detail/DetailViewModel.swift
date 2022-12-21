@@ -14,7 +14,7 @@ class DetailViewModel: ObservableObject {
     private let favGameUseCase: FavoriteGameUseCase
     private let disposeBag = DisposeBag()
 
-    @Published var game: GameEntity?
+    @Published var game: Game?
     @Published var error: Error?
     @Published var loading = true
 
@@ -30,7 +30,7 @@ class DetailViewModel: ObservableObject {
         gameDetailUseCase.getGame(id: id)
             .observe(on: MainScheduler.instance)
             .subscribe { result in
-                self.game = result
+                self.game = mapGameEntityToUiModel(result)
                 self.checkIsFavorite()
             } onError: { error in
                 self.error = error
@@ -55,7 +55,7 @@ class DetailViewModel: ObservableObject {
                 }
                 .disposed(by: disposeBag)
         } else {
-            favGameUseCase.addFavorite(game: self.game!)
+            favGameUseCase.addFavorite(game: mapGameUiModelToEntity(self.game!))
                 .observe(on: MainScheduler.instance)
                 .subscribe { _ in
                     self.game?.isFavorite = true

@@ -12,7 +12,7 @@ class FavoriteViewModel: ObservableObject {
     private let useCase: FavoriteGameUseCase
     private let disposeBag = DisposeBag()
 
-    @Published var games = [GameEntity]()
+    @Published var games = [Game]()
     @Published var error: Error?
 
     init(useCase: FavoriteGameUseCase) {
@@ -24,7 +24,9 @@ class FavoriteViewModel: ObservableObject {
         useCase.getAllFavoriteGames()
             .observe(on: MainScheduler.instance)
             .subscribe { result in
-                self.games = result
+                self.games = result.map { entity in
+                    mapGameEntityToUiModel(entity)
+                }
             } onError: { error in
                 self.error = error
             } onCompleted: {}

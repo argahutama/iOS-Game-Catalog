@@ -10,14 +10,14 @@ import Foundation
 class EditProfileViewModel: ObservableObject {
 
     private let useCase: UserUseCase
-    @Published var myProfile = ProfileEntity(name: "")
+    @Published var myProfile = Profile(name: "")
 
     init(useCase: UserUseCase) {
         self.useCase = useCase
-        self.myProfile = useCase.getProfile()
+        self.myProfile = mapProfileEntityToUiModel(useCase.getProfile())
     }
 
     func setNewProfile() {
-        useCase.set(newProfile: myProfile)
+        useCase.set(newProfile: mapProfileUiModelToEntity(myProfile))
     }
 }

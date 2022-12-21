@@ -9,14 +9,14 @@ import SwiftUI
 import Kingfisher
 
 struct ItemGame: View {
-    let game: GameEntity
+    let game: Game
     let index: Int
     let onAppear: (Int) -> Void
 
     var body: some View {
         NavigationLink(destination: DetailPage(gameId: game.id)) {
             HStack {
-                KFImage.url(URL(string: game.backgroundImage ?? ""))
+                KFImage.url(URL(string: game.backgroundImage))
                     .placeholder { _ in ProgressView() }
                     .resizable()
                     .scaledToFill()
@@ -33,7 +33,7 @@ struct ItemGame: View {
 
                     Text(
                         Utils.formattedDateFromString(
-                            dateString: game.released ?? ""
+                            dateString: game.released
                         )
                     )
                     .font(.system(size: 12))
