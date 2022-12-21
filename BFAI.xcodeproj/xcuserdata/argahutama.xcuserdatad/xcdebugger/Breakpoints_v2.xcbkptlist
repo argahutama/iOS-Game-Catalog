@@ -14,8 +14,8 @@
             filePath = "BFAI/Presentation/Detail/DetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "getGameDetail(id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -69,7 +69,7 @@
             <Locations>
                <Location
                   uuid = "A3384FBF-54EA-4CE7-812C-7B7D0A2C47A7 - 8c9d027ef5229a34"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGameDetailRepository.performRequest(id: Swift.Int) -&gt; ()"
@@ -84,7 +84,7 @@
                </Location>
                <Location
                   uuid = "A3384FBF-54EA-4CE7-812C-7B7D0A2C47A7 - 8c9d027ef5229a34"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGameDetailRepository.performRequest(id: Swift.Int) -&gt; ()"
@@ -117,7 +117,7 @@
             <Locations>
                <Location
                   uuid = "DF68B879-94EC-4E8B-848E-82E9727FFFE6 - 8c9d027ef5229a13"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGameDetailRepository.performRequest(id: Swift.Int) -&gt; ()"
@@ -132,7 +132,7 @@
                </Location>
                <Location
                   uuid = "DF68B879-94EC-4E8B-848E-82E9727FFFE6 - 8c9d027ef5229a13"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGameDetailRepository.performRequest(id: Swift.Int) -&gt; ()"
@@ -229,7 +229,7 @@
             <Locations>
                <Location
                   uuid = "D294D136-3513-4D9F-9258-66CE1240ADEB - a04fe50df2234012"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGamesRepository.performRequest(page: Swift.Int, keyword: Swift.String) -&gt; ()"
@@ -244,7 +244,7 @@
                </Location>
                <Location
                   uuid = "D294D136-3513-4D9F-9258-66CE1240ADEB - a04fe50df2234012"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGamesRepository.performRequest(page: Swift.Int, keyword: Swift.String) -&gt; ()"
@@ -293,7 +293,7 @@
             <Locations>
                <Location
                   uuid = "E1DAD503-6610-4EAC-83AA-54DF549476AE - a04fe50df2234012"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BFAI.GetGamesRepository.performRequest(page: Swift.Int, keyword: Swift.String) -&gt; ()"

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomePage: View {
 
-    @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var viewModel: HomeViewModel
     @State private var searchText = ""
     @Environment(\.isSearching) private var isSearching: Bool
     @Environment(\.dismissSearch) private var dismissSearch

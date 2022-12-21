@@ -10,11 +10,7 @@ import RxSwift
 
 class HomeViewModel: ObservableObject {
 
-    init() {
-        getGames()
-    }
-
-    private let useCase = Injection.sharedInstance.provideGamesUseCase()
+    private let useCase: GamesUseCase
     private let disposeBag = DisposeBag()
 
     @Published var games = [GameEntity]()
@@ -25,6 +21,11 @@ class HomeViewModel: ObservableObject {
     var currentPage = 1
     var enableLoadMore = false
     var keyword = ""
+
+    init(useCase: GamesUseCase) {
+        self.useCase = useCase
+        getGames()
+    }
 
     func getGames() {
         currentPage = 1

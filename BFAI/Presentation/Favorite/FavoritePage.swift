@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritePage: View {
-    @StateObject var viewModel = FavoriteViewModel()
+    @EnvironmentObject var viewModel: FavoriteViewModel
 
     var body: some View {
         VStack {

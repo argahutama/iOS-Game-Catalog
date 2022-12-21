@@ -9,15 +9,16 @@ import Foundation
 import RxSwift
 
 class FavoriteViewModel: ObservableObject {
-    init() {
-        getFavoriteGames()
-    }
-
-    private let useCase = Injection.sharedInstance.provideFavoriteGameUseCase()
+    private let useCase: FavoriteGameUseCase
     private let disposeBag = DisposeBag()
 
     @Published var games = [GameEntity]()
     @Published var error: Error?
+
+    init(useCase: FavoriteGameUseCase) {
+        self.useCase = useCase
+        getFavoriteGames()
+    }
 
     func getFavoriteGames() {
         useCase.getAllFavoriteGames()

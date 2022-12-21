@@ -8,11 +8,12 @@
 import Foundation
 
 class EditProfileViewModel: ObservableObject {
-    private let useCase: UserUseCase = Injection.sharedInstance.provideUserUseCase()
 
+    private let useCase: UserUseCase
     @Published var myProfile = ProfileEntity(name: "")
 
-    init() {
+    init(useCase: UserUseCase) {
+        self.useCase = useCase
         self.myProfile = useCase.getProfile()
     }
 

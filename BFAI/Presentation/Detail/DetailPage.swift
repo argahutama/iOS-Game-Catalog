@@ -10,7 +10,7 @@ import Kingfisher
 
 struct DetailPage: View {
     let gameId: Int
-    @StateObject var viewModel = DetailViewModel()
+    @EnvironmentObject var viewModel: DetailViewModel
 
     init(gameId: Int) {
         self.gameId = gameId

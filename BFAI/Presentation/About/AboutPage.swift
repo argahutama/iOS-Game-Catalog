@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct AboutPage: View {
-    @StateObject var viewModel = AboutViewModel()
+    @EnvironmentObject var viewModel: AboutViewModel
 
     var body: some View {
         VStack {

@@ -10,13 +10,21 @@ import RxSwift
 
 class DetailViewModel: ObservableObject {
 
-    private let gameDetailUseCase: GameDetailUseCase = Injection.sharedInstance.provideGameDetailUseCase()
-    private let favGameUseCase: FavoriteGameUseCase = Injection.sharedInstance.provideFavoriteGameUseCase()
+    private let gameDetailUseCase: GameDetailUseCase
+    private let favGameUseCase: FavoriteGameUseCase
     private let disposeBag = DisposeBag()
 
     @Published var game: GameEntity?
     @Published var error: Error?
     @Published var loading = true
+
+    init(
+        gameDetailUseCase: GameDetailUseCase,
+        favGameUseCase: FavoriteGameUseCase
+    ) {
+        self.gameDetailUseCase = gameDetailUseCase
+        self.favGameUseCase = favGameUseCase
+    }
 
     func getGameDetail(id: Int) {
         gameDetailUseCase.getGame(id: id)
