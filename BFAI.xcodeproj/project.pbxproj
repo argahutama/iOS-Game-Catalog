@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA1872FC29599F3E00AA94EF /* Game in Frameworks */ = {isa = PBXBuildFile; productRef = AA1872FB29599F3E00AA94EF /* Game */; };
 		AA1872FE29599F4100AA94EF /* Profile in Frameworks */ = {isa = PBXBuildFile; productRef = AA1872FD29599F4100AA94EF /* Profile */; };
-		AA1873022959A3EB00AA94EF /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = AA1873012959A3EB00AA94EF /* CorePackage */; };
+		AA43CC072959B44300774CF8 /* FavoriteGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA43CC052959B44300774CF8 /* FavoriteGame.xcdatamodeld */; };
+		AA43CC0A2959B66F00774CF8 /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = AA43CC092959B66F00774CF8 /* CorePackage */; };
 		AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */; };
 		AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A9028CDD3D2002E6E75 /* ContentView.swift */; };
 		AA476A9328CDD3D3002E6E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA476A9228CDD3D3002E6E75 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		AA1872F829599BBE00AA94EF /* Profile */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Profile; path = Modules/Profile; sourceTree = "<group>"; };
 		AA1872FA29599DF800AA94EF /* Game */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Game; path = Modules/Game; sourceTree = "<group>"; };
 		AA3D103228DE3D850075C5E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA43CC062959B44300774CF8 /* FavoriteGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteGame.xcdatamodel; sourceTree = "<group>"; };
 		AA476A8B28CDD3D2002E6E75 /* BFAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFAIApp.swift; sourceTree = "<group>"; };
 		AA476A9028CDD3D2002E6E75 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1873022959A3EB00AA94EF /* CorePackage in Frameworks */,
+				AA43CC0A2959B66F00774CF8 /* CorePackage in Frameworks */,
 				AA1872FE29599F4100AA94EF /* Profile in Frameworks */,
 				AA1872FC29599F3E00AA94EF /* Game in Frameworks */,
 				AAE902A4294F44610022B52F /* RxSwift in Frameworks */,
@@ -93,6 +95,7 @@
 			children = (
 				AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */,
 				AA476A9028CDD3D2002E6E75 /* ContentView.swift */,
+				AA43CC052959B44300774CF8 /* FavoriteGame.xcdatamodeld */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -118,7 +121,7 @@
 				AAE902A3294F44610022B52F /* RxSwift */,
 				AA1872FB29599F3E00AA94EF /* Game */,
 				AA1872FD29599F4100AA94EF /* Profile */,
-				AA1873012959A3EB00AA94EF /* CorePackage */,
+				AA43CC092959B66F00774CF8 /* CorePackage */,
 			);
 			productName = BFAI;
 			productReference = AA476A8B28CDD3D2002E6E75 /* BFAI.app */;
@@ -152,8 +155,7 @@
 				AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AAE902A0294F44610022B52F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				AAE902A7294F4DDC0022B52F /* XCRemoteSwiftPackageReference "Alamofire" */,
-				AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */,
-				AA1873002959A3EB00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */,
+				AA43CC082959B66F00774CF8 /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */,
 			);
 			productRefGroup = AA476A8C28CDD3D2002E6E75 /* Products */;
 			projectDirPath = "";
@@ -203,6 +205,7 @@
 			files = (
 				AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */,
 				AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */,
+				AA43CC072959B44300774CF8 /* FavoriteGame.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,28 +410,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/argahutama/GameCatalogCorePackage.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.0.0;
-			};
-		};
-		AA1873002959A3EB00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/argahutama/GameCatalogCorePackage.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.0.0;
-			};
-		};
 		AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
+			};
+		};
+		AA43CC082959B66F00774CF8 /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argahutama/GameCatalogCorePackage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.1;
 			};
 		};
 		AAE902A0294F44610022B52F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
@@ -458,9 +453,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Profile;
 		};
-		AA1873012959A3EB00AA94EF /* CorePackage */ = {
+		AA43CC092959B66F00774CF8 /* CorePackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */;
+			package = AA43CC082959B66F00774CF8 /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */;
 			productName = CorePackage;
 		};
 		AAE902A3294F44610022B52F /* RxSwift */ = {
@@ -469,6 +464,19 @@
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		AA43CC052959B44300774CF8 /* FavoriteGame.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AA43CC062959B44300774CF8 /* FavoriteGame.xcdatamodel */,
+			);
+			currentVersion = AA43CC062959B44300774CF8 /* FavoriteGame.xcdatamodel */;
+			path = FavoriteGame.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AA476A8328CDD3D2002E6E75 /* Project object */;
 }

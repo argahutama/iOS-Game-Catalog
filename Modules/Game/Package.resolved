@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/argahutama/GameCatalogCorePackage.git",
       "state" : {
-        "revision" : "c2dfec0f87b13ccfc97508b1812ad7186e40fbd9",
-        "version" : "1.0.0"
+        "revision" : "4fe144ca1aa01bcd855317004a2d23d6bfe05b25",
+        "version" : "1.0.1"
       }
     },
     {
