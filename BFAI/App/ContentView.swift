@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import Game
+import Profile
 
 struct ContentView: View {
     var body: some View {
-        HomePage()
+        HomePage(onAboutClicked: {
+            AboutPage()
+        })
     }
 }
 

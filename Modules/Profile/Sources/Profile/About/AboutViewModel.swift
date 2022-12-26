@@ -8,11 +8,11 @@
 import Foundation
 import CorePackage
 
-class AboutViewModel: ObservableObject {
+public class AboutViewModel: ObservableObject {
     private let useCase: UserUseCase
     @Published var myProfile = Profile(name: "")
 
-    init(useCase: UserUseCase) {
+    public init(useCase: UserUseCase) {
         self.useCase = useCase
         getProfile()
     }

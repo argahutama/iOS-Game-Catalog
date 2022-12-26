@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import CorePackage
 
-class HomeViewModel: ObservableObject {
+public class HomeViewModel: ObservableObject {
 
     private let useCase: GamesUseCase
     private let disposeBag = DisposeBag()
@@ -23,7 +23,7 @@ class HomeViewModel: ObservableObject {
     var enableLoadMore = false
     var keyword = ""
 
-    init(useCase: GamesUseCase) {
+    public init(useCase: GamesUseCase) {
         self.useCase = useCase
         getGames()
     }

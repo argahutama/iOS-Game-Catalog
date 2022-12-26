@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import CorePackage
 
-class DetailViewModel: ObservableObject {
+public class DetailViewModel: ObservableObject {
 
     private let gameDetailUseCase: GameDetailUseCase
     private let favGameUseCase: FavoriteGameUseCase
@@ -19,7 +19,7 @@ class DetailViewModel: ObservableObject {
     @Published var error: Error?
     @Published var loading = true
 
-    init(
+    public init(
         gameDetailUseCase: GameDetailUseCase,
         favGameUseCase: FavoriteGameUseCase
     ) {

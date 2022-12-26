@@ -8,12 +8,12 @@
 import Foundation
 import CorePackage
 
-class EditProfileViewModel: ObservableObject {
+public class EditProfileViewModel: ObservableObject {
 
     private let useCase: UserUseCase
     @Published var myProfile = Profile(name: "")
 
-    init(useCase: UserUseCase) {
+    public init(useCase: UserUseCase) {
         self.useCase = useCase
         self.myProfile = mapProfileEntityToUiModel(useCase.getProfile())
     }

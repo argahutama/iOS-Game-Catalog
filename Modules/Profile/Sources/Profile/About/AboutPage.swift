@@ -8,10 +8,12 @@
 import SwiftUI
 import Kingfisher
 
-struct AboutPage: View {
+public struct AboutPage: View {
     @EnvironmentObject var viewModel: AboutViewModel
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {

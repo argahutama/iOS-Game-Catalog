@@ -9,14 +9,14 @@ import Foundation
 import RxSwift
 import CorePackage
 
-class FavoriteViewModel: ObservableObject {
+public class FavoriteViewModel: ObservableObject {
     private let useCase: FavoriteGameUseCase
     private let disposeBag = DisposeBag()
 
     @Published var games = [Game]()
     @Published var error: Error?
 
-    init(useCase: FavoriteGameUseCase) {
+    public init(useCase: FavoriteGameUseCase) {
         self.useCase = useCase
         getFavoriteGames()
     }

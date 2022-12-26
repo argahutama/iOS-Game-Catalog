@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct HomePage: View {
-
+public struct HomePage<Destination: View>: View {
+    let onAboutClicked: () -> Destination
     @EnvironmentObject var viewModel: HomeViewModel
     @State private var searchText = ""
     @Environment(\.isSearching) private var isSearching: Bool
     @Environment(\.dismissSearch) private var dismissSearch
 
-    var body: some View {
+    public init(onAboutClicked: @escaping (() -> Destination)) {
+        self.onAboutClicked = onAboutClicked
+    }
+
+    public var body: some View {
         NavigationView {
             ZStack {
                 VStack {
@@ -53,7 +57,7 @@ struct HomePage: View {
                         NavigationLink(destination: FavoritePage()) {
                             Text("Favorites")
                         }
-                        NavigationLink(destination: AboutPage()) {
+                        NavigationLink(destination: self.onAboutClicked()) {
                             Text("About")
                         }
                     }
