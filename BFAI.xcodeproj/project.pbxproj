@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA1872EE2959977900AA94EF /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = AA1872ED2959977900AA94EF /* CorePackage */; };
 		AA1872FC29599F3E00AA94EF /* Game in Frameworks */ = {isa = PBXBuildFile; productRef = AA1872FB29599F3E00AA94EF /* Game */; };
 		AA1872FE29599F4100AA94EF /* Profile in Frameworks */ = {isa = PBXBuildFile; productRef = AA1872FD29599F4100AA94EF /* Profile */; };
+		AA1873022959A3EB00AA94EF /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = AA1873012959A3EB00AA94EF /* CorePackage */; };
 		AA476A8F28CDD3D2002E6E75 /* BFAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A8E28CDD3D2002E6E75 /* BFAIApp.swift */; };
 		AA476A9128CDD3D2002E6E75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA476A9028CDD3D2002E6E75 /* ContentView.swift */; };
 		AA476A9328CDD3D3002E6E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA476A9228CDD3D3002E6E75 /* Assets.xcassets */; };
@@ -18,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA1872EB2959971400AA94EF /* CorePackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CorePackage; path = Modules/CorePackage; sourceTree = "<group>"; };
 		AA1872F829599BBE00AA94EF /* Profile */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Profile; path = Modules/Profile; sourceTree = "<group>"; };
 		AA1872FA29599DF800AA94EF /* Game */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Game; path = Modules/Game; sourceTree = "<group>"; };
 		AA3D103228DE3D850075C5E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,10 +33,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1873022959A3EB00AA94EF /* CorePackage in Frameworks */,
 				AA1872FE29599F4100AA94EF /* Profile in Frameworks */,
 				AA1872FC29599F3E00AA94EF /* Game in Frameworks */,
 				AAE902A4294F44610022B52F /* RxSwift in Frameworks */,
-				AA1872EE2959977900AA94EF /* CorePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +55,6 @@
 			children = (
 				AA1872FA29599DF800AA94EF /* Game */,
 				AA1872F829599BBE00AA94EF /* Profile */,
-				AA1872EB2959971400AA94EF /* CorePackage */,
 				AA476A8D28CDD3D2002E6E75 /* BFAI */,
 				AA476A8C28CDD3D2002E6E75 /* Products */,
 				AA1872EC2959977900AA94EF /* Frameworks */,
@@ -118,9 +116,9 @@
 			name = BFAI;
 			packageProductDependencies = (
 				AAE902A3294F44610022B52F /* RxSwift */,
-				AA1872ED2959977900AA94EF /* CorePackage */,
 				AA1872FB29599F3E00AA94EF /* Game */,
 				AA1872FD29599F4100AA94EF /* Profile */,
+				AA1873012959A3EB00AA94EF /* CorePackage */,
 			);
 			productName = BFAI;
 			productReference = AA476A8B28CDD3D2002E6E75 /* BFAI.app */;
@@ -154,6 +152,8 @@
 				AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AAE902A0294F44610022B52F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				AAE902A7294F4DDC0022B52F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */,
+				AA1873002959A3EB00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */,
 			);
 			productRefGroup = AA476A8C28CDD3D2002E6E75 /* Products */;
 			projectDirPath = "";
@@ -407,6 +407,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argahutama/GameCatalogCorePackage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.0;
+			};
+		};
+		AA1873002959A3EB00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argahutama/GameCatalogCorePackage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.0;
+			};
+		};
 		AA37FDF228CE25B3004EB465 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -434,10 +450,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA1872ED2959977900AA94EF /* CorePackage */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CorePackage;
-		};
 		AA1872FB29599F3E00AA94EF /* Game */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Game;
@@ -445,6 +457,11 @@
 		AA1872FD29599F4100AA94EF /* Profile */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Profile;
+		};
+		AA1873012959A3EB00AA94EF /* CorePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1872FF2959A38A00AA94EF /* XCRemoteSwiftPackageReference "GameCatalogCorePackage" */;
+			productName = CorePackage;
 		};
 		AAE902A3294F44610022B52F /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

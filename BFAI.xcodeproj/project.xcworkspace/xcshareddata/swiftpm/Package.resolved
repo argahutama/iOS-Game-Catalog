@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "gamecatalogcorepackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/argahutama/GameCatalogCorePackage.git",
+      "state" : {
+        "revision" : "c2dfec0f87b13ccfc97508b1812ad7186e40fbd9",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
