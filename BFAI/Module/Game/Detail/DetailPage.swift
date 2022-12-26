@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import CorePackage
 
 struct DetailPage: View {
     let gameId: Int

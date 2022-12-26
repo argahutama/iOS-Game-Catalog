@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-final class Injection: NSObject {
-    static let sharedInstance = Injection()
+public final class Injection: NSObject {
+    public static let sharedInstance = Injection()
 
     private override init() {}
 
@@ -62,24 +62,24 @@ final class Injection: NSObject {
         return UserRepositoryImpl.sharedInstance(provideLocalDataSource())
     }
 
-    func provideGamesUseCase() -> GamesUseCase {
+    public func provideGamesUseCase() -> GamesUseCase {
         let repository = provideGamesRepository()
         return GameUseCaseImpl(repository: repository)
     }
 
-    func provideGameDetailUseCase() -> GameDetailUseCase {
+    public func provideGameDetailUseCase() -> GameDetailUseCase {
         let repository = provideGameDetailRepository()
 
         return GameDetailUseCaseImpl(repository: repository)
     }
 
-    func provideFavoriteGameUseCase() -> FavoriteGameUseCase {
+    public func provideFavoriteGameUseCase() -> FavoriteGameUseCase {
         let repository = provideFavoriteGameRepository()
 
         return FavoriteGameUseCaseImpl(repository: repository)
     }
 
-    func provideUserUseCase() -> UserUseCase {
+    public func provideUserUseCase() -> UserUseCase {
         let repository = provideUserRepository()
 
         return UserUseCaseImpl(repository: repository)

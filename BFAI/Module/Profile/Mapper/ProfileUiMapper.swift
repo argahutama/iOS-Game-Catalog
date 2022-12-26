@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CorePackage
 
 func mapProfileEntityToUiModel(_ entity: ProfileEntity) -> Profile {
     return Profile(

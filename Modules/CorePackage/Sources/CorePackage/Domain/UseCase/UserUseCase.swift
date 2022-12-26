@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserUseCase {
+public protocol UserUseCase {
     func set(newProfile profile: ProfileEntity)
     func getProfile() -> ProfileEntity
     func sync()

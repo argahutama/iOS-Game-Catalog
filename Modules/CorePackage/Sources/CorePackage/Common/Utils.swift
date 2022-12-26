@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Utils {
-    static func formattedDateFromString(
+public class Utils {
+    public static func formattedDateFromString(
         dateString: String?,
         withFormat format: String = "dd MMMM yyyy"
     ) -> String {

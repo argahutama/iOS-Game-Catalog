@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CorePackage
 
 func mapGameEntityToUiModel(_ entity: GameEntity) -> Game {
     return Game(

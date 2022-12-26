@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CorePackage
 
 struct EditProfilePage: View {
     @EnvironmentObject var viewModel: EditProfileViewModel

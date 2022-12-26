@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol GameDetailUseCase {
+public protocol GameDetailUseCase {
     func getGame(id: Int) -> Observable<GameEntity>
 }
 

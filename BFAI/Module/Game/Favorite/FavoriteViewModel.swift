@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import CorePackage
 
 class FavoriteViewModel: ObservableObject {
     private let useCase: FavoriteGameUseCase

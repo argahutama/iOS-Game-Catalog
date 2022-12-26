@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CorePackage
 
 class EditProfileViewModel: ObservableObject {
 

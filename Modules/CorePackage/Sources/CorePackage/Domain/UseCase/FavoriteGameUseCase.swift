@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol FavoriteGameUseCase {
+public protocol FavoriteGameUseCase {
     func getAllFavoriteGames() -> Observable<[GameEntity]>
     func addFavorite(game: GameEntity) -> Observable<Void>
     func findData(gameId: Int) -> Observable<Bool>

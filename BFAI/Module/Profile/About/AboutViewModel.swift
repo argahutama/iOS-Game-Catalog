@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CorePackage
 
 class AboutViewModel: ObservableObject {
     private let useCase: UserUseCase

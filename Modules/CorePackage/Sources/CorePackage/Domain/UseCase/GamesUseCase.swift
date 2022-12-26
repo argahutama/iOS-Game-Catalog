@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol GamesUseCase {
+public protocol GamesUseCase {
     func getGames(page: Int, keyword: String) -> Observable<PagingEntity<GameEntity>>
 }
 
