@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import CorePackage
+import Game
+import Profile
 
 @main
 struct BFAIApp: App {
