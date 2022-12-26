@@ -55,10 +55,10 @@ public struct HomePage<Destination: View>: View {
                 trailing:
                     HStack {
                         NavigationLink(destination: FavoritePage()) {
-                            Text("Favorites")
+                            Image(systemName: "heart")
                         }
                         NavigationLink(destination: self.onAboutClicked()) {
-                            Text("About")
+                            Image(systemName: "person")
                         }
                     }
             )

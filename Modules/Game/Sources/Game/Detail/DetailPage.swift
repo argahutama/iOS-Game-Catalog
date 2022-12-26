@@ -62,13 +62,6 @@ struct DetailPage: View {
 
                             Spacer()
 
-                            Text(viewModel.game?.description.htmlStripped ?? "")
-                                .frame(
-                                    maxWidth: .infinity,
-                                    alignment: .leading
-                                )
-                                .padding()
-
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
                                     Text("Rating")
@@ -103,7 +96,39 @@ struct DetailPage: View {
                                     alignment: .leading
                                 )
                             }
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+                            .padding(
+                                EdgeInsets(
+                                    top: 20,
+                                    leading: 20,
+                                    bottom: 20,
+                                    trailing: 20
+                                )
+                            )
+
+                            Text("Description")
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray).padding(
+                                    EdgeInsets(
+                                        top: 0,
+                                        leading: 20,
+                                        bottom: 0,
+                                        trailing: 20
+                                    )
+                                )
+
+                            Text(viewModel.game?.description.htmlStripped ?? "")
+                                .frame(
+                                    maxWidth: .infinity,
+                                    alignment: .leading
+                                )
+                                .padding(
+                                    EdgeInsets(
+                                        top: 0,
+                                        leading: 20,
+                                        bottom: 20,
+                                        trailing: 20
+                                    )
+                                )
                         }
                     }
                 } else {

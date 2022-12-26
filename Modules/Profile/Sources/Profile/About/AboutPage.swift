@@ -69,7 +69,7 @@ public struct AboutPage: View {
             trailing:
                 HStack {
                     NavigationLink(destination: EditProfilePage()) {
-                        Text("Edit Profile")
+                        Image(systemName: "square.and.pencil")
                     }
                 }
         )
