@@ -180,11 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				AAE902AA294F5F7A0022B52F /* App */,
-				AAE90297294F413F0022B52F /* Domain */,
+				AAC0FDDE29593FD700F1E20F /* Core */,
+				AAC0FDDD29593FA600F1E20F /* Module */,
 				AA3D103228DE3D850075C5E5 /* Info.plist */,
-				AAA743AA28CE175300B3C7B1 /* Common */,
-				AAA7438D28CDE18800B3C7B1 /* Presentation */,
-				AAA7438C28CDE10100B3C7B1 /* Data */,
 				AA476A9228CDD3D3002E6E75 /* Assets.xcassets */,
 				AA476A9428CDD3D3002E6E75 /* Preview Content */,
 			);
@@ -294,15 +292,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		AAA7438D28CDE18800B3C7B1 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				AA4D8D242953356000C7F100 /* Game */,
-				AA4D8D21295334CE00C7F100 /* Profile */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		AAA7438E28CDE1A100B3C7B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +369,25 @@
 				AA75264229502615005E63EC /* ItemGame.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AAC0FDDD29593FA600F1E20F /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				AA4D8D21295334CE00C7F100 /* Profile */,
+				AA4D8D242953356000C7F100 /* Game */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		AAC0FDDE29593FD700F1E20F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AAA743AA28CE175300B3C7B1 /* Common */,
+				AAA7438C28CDE10100B3C7B1 /* Data */,
+				AAE90297294F413F0022B52F /* Domain */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		AAE90297294F413F0022B52F /* Domain */ = {
